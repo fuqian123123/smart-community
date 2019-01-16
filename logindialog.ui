@@ -23,7 +23,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>    欢迎登陆智慧小区系统</string>
+    <string>智慧小区管理系统</string>
    </property>
   </widget>
   <widget class="QLabel" name="label_2">
@@ -36,7 +36,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>用户名</string>
+    <string>账号</string>
    </property>
   </widget>
   <widget class="QLabel" name="label_3">
@@ -52,7 +52,7 @@
     <string>密码</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="usnLineEdit">
+  <widget class="QLineEdit" name="acntLineEdit">
    <property name="geometry">
     <rect>
      <x>100</x>
@@ -102,6 +102,48 @@
    </property>
    <property name="text">
     <string>退出</string>
+   </property>
+  </widget>
+  <widget class="QRadioButton" name="adminRadioBtn">
+   <property name="geometry">
+    <rect>
+     <x>60</x>
+     <y>190</y>
+     <width>89</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>管理员</string>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QRadioButton" name="workerRadioBtn">
+   <property name="geometry">
+    <rect>
+     <x>160</x>
+     <y>190</y>
+     <width>89</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>工作人员</string>
+   </property>
+  </widget>
+  <widget class="QRadioButton" name="ownerRadioBtn">
+   <property name="geometry">
+    <rect>
+     <x>260</x>
+     <y>190</y>
+     <width>89</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>业主</string>
    </property>
   </widget>
  </widget>
