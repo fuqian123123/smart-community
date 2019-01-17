@@ -55,7 +55,8 @@ void LoginDialog::on_loginBtn_clicked()
 
         quint16 type=qbg->checkedId();
         model->setTable("user");
-        QString filter=QString("account_num='%1'and u_password='%2'").arg(account_num,password);
+        QString filter=QString("account_num='%1'and u_password='%2' and u_type='%3'")
+                .arg(account_num,password,QString::number(type,10));
         model->setFilter(filter);
         model->select();
         if(model->rowCount()>0){

@@ -1,16 +1,14 @@
 #include "basemanagewidget.h"
 #include "ui_basemanagewidget.h"
+#include <QPushButton>
 #include <QLabel>
 #include <QLineEdit>
-#include <QTableView>
+#include <QTableWidget>
 #include <QHBoxLayout>
 
 BaseManageWidget::BaseManageWidget(QWidget *parent) :
-    QWidget(parent),
-    ui(new Ui::BaseManageWidget)
+    QWidget(parent)
 {
-    ui->setupUi(this);
-
     leftLayout=new QVBoxLayout;
     rightLayout=new QVBoxLayout;
 
@@ -28,18 +26,28 @@ BaseManageWidget::BaseManageWidget(QWidget *parent) :
     l_layout2->addWidget(l_label2,2,Qt::AlignLeft);
     l_layout2->addWidget(l_lineEdit2,4,Qt::AlignRight);
 
+    QHBoxLayout* l_b_layout=new QHBoxLayout();
+    QPushButton* enter=new QPushButton;
+    enter->setText("确定");
+    QPushButton* clear=new QPushButton;
+    clear->setText("清空");
+    l_b_layout->setMargin(10);
+    l_b_layout->addWidget(enter);
+    l_b_layout->addWidget(clear);
+
     leftLayout->addLayout(l_layout1);
     leftLayout->addLayout(l_layout2);
+    leftLayout->addLayout(l_b_layout);
 
-    QTableView* tableView=new QTableView;
-    rightLayout->addWidget(tableView);
+    QTableWidget* tableWidget=new QTableWidget;
+    rightLayout->addWidget(tableWidget);
 
     QHBoxLayout* layout=new QHBoxLayout(this);
-    layout->addLayout(leftLayout);
-    layout->addLayout(rightLayout);
+    layout->addLayout(leftLayout,2);
+    layout->addLayout(rightLayout,5);
 }
 
 BaseManageWidget::~BaseManageWidget()
 {
-    delete ui;
+    //delete ui;
 }

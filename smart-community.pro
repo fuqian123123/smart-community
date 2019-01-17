@@ -39,5 +39,4 @@ HEADERS  += \
 
 FORMS    += mainwindow.ui \
     logindialog.ui \
-    mannagerform.ui \
-    basemanagewidget.ui
+    mannagerform.ui

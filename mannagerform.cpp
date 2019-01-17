@@ -13,7 +13,7 @@ MannagerForm::MannagerForm(QWidget *parent) :
     ui(new Ui::MannagerForm)
 {
     ui->setupUi(this);
-    this->resize(500,500);
+    this->resize(800,500);
 
     //页面头部
     ui->h_lable->setText("智慧小区>管理员");

@@ -4,10 +4,6 @@
 #include <QWidget>
 #include <QVBoxLayout>
 
-namespace Ui {
-class BaseManageWidget;
-}
-
 class BaseManageWidget : public QWidget
 {
     Q_OBJECT
@@ -17,7 +13,6 @@ public:
     ~BaseManageWidget();
 
 private:
-    Ui::BaseManageWidget *ui;
     QVBoxLayout* leftLayout;
     QVBoxLayout* rightLayout;
 };
