@@ -1,8 +1,11 @@
 #include <QWidget>
+#include <QLabel>
 #include <QTableView>
 #include <QVBoxLayout>
+#include <QStackedWidget>
 #include "mannagerform.h"
 #include "ui_mannagerform.h"
+#include "basemanagewidget.h"
 
 /*管理员主界面*/
 MannagerForm::MannagerForm(QWidget *parent) :
@@ -20,6 +23,10 @@ MannagerForm::MannagerForm(QWidget *parent) :
     h_layout1->addWidget(ui->h_btn1);
     h_layout1->addWidget(ui->h_btn2);
 
+    //页面中部
+    BaseManageWidget *bmw=new BaseManageWidget;
+    QStackedWidget* c_stackedWidget=new QStackedWidget(this);
+    c_stackedWidget->addWidget(bmw);
 
     //页面底部
     QVBoxLayout* layout=new QVBoxLayout(this);
@@ -28,6 +35,7 @@ MannagerForm::MannagerForm(QWidget *parent) :
     //排版
     layout->addWidget(ui->h_lable);
     layout->addLayout(h_layout1);
+    layout->addWidget(c_stackedWidget);
     layout->addWidget(ui->b_btn1);
     layout->setMargin(0);
     layout->setSpacing(15);

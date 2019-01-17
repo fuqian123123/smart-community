@@ -61,9 +61,16 @@ void LoginDialog::on_loginBtn_clicked()
         if(model->rowCount()>0){
             QMessageBox::information(this,tr("成功"),tr("登录成功!"),QMessageBox::Ok);
             switch (type) {
+            //管理员
             case 1:
                 mf=new MannagerForm;
                 mf->show();
+                break;
+            //工作人员
+            case 2:
+                break;
+            //业主
+            case 3:
                 break;
             default:
                 break;
