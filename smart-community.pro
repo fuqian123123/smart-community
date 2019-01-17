@@ -26,13 +26,15 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 
 SOURCES += main.cpp\
-        mainwindow.cpp \
     logindialog.cpp \
-    sqlmannager.cpp
+    sqlmannager.cpp \
+    mannagerform.cpp
 
-HEADERS  += mainwindow.h \
+HEADERS  += \
     logindialog.h \
-    sqlmannager.h
+    sqlmannager.h \
+    mannagerform.h
 
 FORMS    += mainwindow.ui \
-    logindialog.ui
+    logindialog.ui \
+    mannagerform.ui

@@ -120,7 +120,7 @@
     <bool>true</bool>
    </property>
   </widget>
-  <widget class="QRadioButton" name="workerRadioBtn">
+  <widget class="QRadioButton" name="staffRadioBtn">
    <property name="geometry">
     <rect>
      <x>160</x>

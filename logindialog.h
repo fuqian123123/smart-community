@@ -2,6 +2,9 @@
 #define LOGINDIALOG_H
 
 #include <QDialog>
+#include <QButtonGroup>
+#include <QSqlTableModel>
+#include "mannagerform.h"
 
 namespace Ui {
 class LoginDialog;
@@ -22,6 +25,10 @@ private slots:
 
 private:
     Ui::LoginDialog *ui;
+    QButtonGroup* qbg;
+    QSqlTableModel *model;
+    MannagerForm* mf;
+
 };
 
 #endif // LOGINDIALOG_H
