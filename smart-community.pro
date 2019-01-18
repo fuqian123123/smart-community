@@ -38,5 +38,4 @@ HEADERS  += \
     basemanagewidget.h
 
 FORMS    += mainwindow.ui \
-    logindialog.ui \
-    mannagerform.ui
+    logindialog.ui

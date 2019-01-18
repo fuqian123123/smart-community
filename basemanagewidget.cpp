@@ -1,50 +1,26 @@
 #include "basemanagewidget.h"
-#include "ui_basemanagewidget.h"
-#include <QPushButton>
-#include <QLabel>
-#include <QLineEdit>
-#include <QTableWidget>
-#include <QHBoxLayout>
 
 BaseManageWidget::BaseManageWidget(QWidget *parent) :
     QWidget(parent)
 {
-    leftLayout=new QVBoxLayout;
-    rightLayout=new QVBoxLayout;
+    layout=new QVBoxLayout(this);
 
-    QHBoxLayout* l_layout1=new QHBoxLayout();
-    QLabel* l_label1=new QLabel;
-    l_label1->setText("测试");
-    QLineEdit* l_lineEdit1=new QLineEdit;
-    l_layout1->addWidget(l_label1,2,Qt::AlignLeft);
-    l_layout1->addWidget(l_lineEdit1,4,Qt::AlignRight);
+    b_btn1=new QPushButton;
+    b_btn2=new QPushButton;
+    b_btn3=new QPushButton;
+    b_btn1->setText("添加");
+    b_btn2->setText("修改");
+    b_btn3->setText("详情");
 
-    QHBoxLayout* l_layout2=new QHBoxLayout();
-    QLabel* l_label2=new QLabel;
-    l_label2->setText("测试2");
-    QLineEdit* l_lineEdit2=new QLineEdit;
-    l_layout2->addWidget(l_label2,2,Qt::AlignLeft);
-    l_layout2->addWidget(l_lineEdit2,4,Qt::AlignRight);
+    b_layout=new QHBoxLayout;
+    b_layout->addWidget(b_btn1);
+    b_layout->addWidget(b_btn2);
+    b_layout->addWidget(b_btn3);
 
-    QHBoxLayout* l_b_layout=new QHBoxLayout();
-    QPushButton* enter=new QPushButton;
-    enter->setText("确定");
-    QPushButton* clear=new QPushButton;
-    clear->setText("清空");
-    l_b_layout->setMargin(10);
-    l_b_layout->addWidget(enter);
-    l_b_layout->addWidget(clear);
+    tableWidget=new QTableWidget;
 
-    leftLayout->addLayout(l_layout1);
-    leftLayout->addLayout(l_layout2);
-    leftLayout->addLayout(l_b_layout);
-
-    QTableWidget* tableWidget=new QTableWidget;
-    rightLayout->addWidget(tableWidget);
-
-    QHBoxLayout* layout=new QHBoxLayout(this);
-    layout->addLayout(leftLayout,2);
-    layout->addLayout(rightLayout,5);
+    layout->addWidget(tableWidget);
+    layout->addLayout(b_layout);
 }
 
 BaseManageWidget::~BaseManageWidget()

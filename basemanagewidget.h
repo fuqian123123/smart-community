@@ -2,6 +2,8 @@
 #define BASEMANAGEWIDGET_H
 
 #include <QWidget>
+#include <QTableWidget>
+#include <QPushButton>
 #include <QVBoxLayout>
 
 class BaseManageWidget : public QWidget
@@ -13,8 +15,12 @@ public:
     ~BaseManageWidget();
 
 private:
-    QVBoxLayout* leftLayout;
-    QVBoxLayout* rightLayout;
+    QPushButton* b_btn1;
+    QPushButton* b_btn2;
+    QPushButton* b_btn3;
+    QTableWidget* tableWidget;
+    QVBoxLayout* layout;
+    QHBoxLayout* b_layout;
 };
 
 #endif // BASEMANAGEWIDGET_H
