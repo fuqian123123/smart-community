@@ -1,6 +1,6 @@
-#include "base_add_widget.h"
+#include "base_handle_widget.h"
 
-BaseAddWidget::BaseAddWidget(QWidget *parent) : QWidget(parent)
+BaseHandleWidget::BaseHandleWidget(QWidget *parent) : QWidget(parent)
 {
     this->resize(350,100);
     layout=new QVBoxLayout(this);
@@ -14,10 +14,10 @@ BaseAddWidget::BaseAddWidget(QWidget *parent) : QWidget(parent)
     b_layout->addWidget(clear_btn);
     b_layout->setMargin(10);
 }
-void BaseAddWidget::init(){
+void BaseHandleWidget::init(){
 }
 
-void BaseAddWidget::enter(){
+void BaseHandleWidget::enter(){
 }
-void BaseAddWidget::clear(){
+void BaseHandleWidget::clear(){
 }

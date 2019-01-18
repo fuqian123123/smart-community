@@ -1,5 +1,6 @@
 #include <QHeaderView>
 #include <QApplication>
+#include <QMessageBox>
 #include "base_manage_widget.h"
 
 BaseManageWidget::BaseManageWidget(QWidget *parent) :
@@ -35,14 +36,11 @@ void BaseManageWidget::loadData(const QString &tableName){
     tableView->setEditTriggers(QAbstractItemView::NoEditTriggers);
     tableView->show();
 }
-void BaseManageWidget::init(){
-}
-void BaseManageWidget::add(){
-}
-void BaseManageWidget::edit(){
-}
-void BaseManageWidget::detail(){
-}
+
+void BaseManageWidget::init(){}
+void BaseManageWidget::add(){}
+void BaseManageWidget::edit(){}
+void BaseManageWidget::detail(){}
 
 BaseManageWidget::~BaseManageWidget()
 {

@@ -18,6 +18,28 @@ void ManagerRenYuanManageWidget::add(){
     mryaw->show();
 }
 void ManagerRenYuanManageWidget::edit(){
+    int rowNum=tableView->currentIndex().row();
+    QAbstractItemModel *qaim = tableView->model();
+    QModelIndex qmi=qaim->index(rowNum,0);
+    QVariant qv=qaim->data(qmi);
+    QString accountNum=qv.toString();
+
+    mryew=new ManagerRenYuanEditWidget;
+    mryew->loadData(accountNum);
+    mryew->setWindowTitle("修改");
+    mryew->setWindowModality(Qt::ApplicationModal);
+    mryew->show();
+    /*if(model->submitAll()){
+        if(model->database().commit())
+            QMessageBox::information(this,tr("成功"),tr("添加成功!"),QMessageBox::Ok);
+        else
+            qDebug()<<model->lastError().text();
+        this->clear();
+    }
+    else{
+        model->database().rollback();
+        QMessageBox::information(this,tr("失败")
+        ,tr("添加失败:%1!").arg(model->lastError().text()),QMessageBox::Ok);
+    }*/
 }
-void ManagerRenYuanManageWidget::detail(){
-}
+void ManagerRenYuanManageWidget::detail(){}

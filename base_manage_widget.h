@@ -15,7 +15,7 @@ class BaseManageWidget : public QWidget
 
 public:
     explicit BaseManageWidget(QWidget *parent = 0);
-    ~BaseManageWidget();
+    ~BaseManageWidget();    
 protected:
     QPushButton* b_btn_1;
     QPushButton* b_btn_2;
@@ -30,6 +30,7 @@ protected slots:
     void add();
     void edit();
     void detail();
+
 };
 
 #endif // BASEMANAGEWIDGET_H

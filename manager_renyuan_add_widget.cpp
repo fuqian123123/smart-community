@@ -1,8 +1,14 @@
 #include <QMessageBox>
+#include <QSqlError>
+#include <QSqlQuery>
+#include <QDebug>
 #include "manager_renyuan_add_widget.h"
+#include "manager_renyuan_manage_widget.h"
 
+/*人员添加弹出页面*/
 ManagerRenYuanAddWidget::ManagerRenYuanAddWidget()
 {
+    //元素初始化
     label_1=new QLabel;
     label_2=new QLabel;
     label_1->setText("账号");
@@ -10,21 +16,42 @@ ManagerRenYuanAddWidget::ManagerRenYuanAddWidget()
     lineEdit_1=new QLineEdit;
     lineEdit_2=new QLineEdit;
     lineEdit_1->setFocus();
+    radioBtn_1=new QRadioButton;
+    radioBtn_2=new QRadioButton;
+    radioBtn_3=new QRadioButton;
+    radioBtn_1->setText("管理员");
+    radioBtn_2->setText("工作人员");
+    radioBtn_3->setText("业主");
+    radioBtn_1->setChecked(true);
+    qbg=new QButtonGroup;
+    qbg->addButton(radioBtn_1);
+    qbg->addButton(radioBtn_2);
+    qbg->addButton(radioBtn_3);
+    qbg->setId(radioBtn_1,1);
+    qbg->setId(radioBtn_2,2);
+    qbg->setId(radioBtn_3,3);
 
     layout_1=new QHBoxLayout;
     layout_2=new QHBoxLayout;
+    layout_3=new QHBoxLayout;
     layout_1->addWidget(label_1,2);
     layout_1->addWidget(lineEdit_1,4);
     layout_2->addWidget(label_2,2);
     layout_2->addWidget(lineEdit_2,4);
+    layout_3->addWidget(radioBtn_1);
+    layout_3->addWidget(radioBtn_2);
+    layout_3->addWidget(radioBtn_3);
 
     layout->addLayout(layout_1);
     layout->addLayout(layout_2);
+    layout->addLayout(layout_3);
     layout->addLayout(b_layout);
 
     //信号和槽关联
     connect(this->enter_btn,QPushButton::clicked,this,enter);
     connect(this->clear_btn,QPushButton::clicked,this,clear);
+    //model初始化
+    model=new QSqlTableModel(this);
 }
 void ManagerRenYuanAddWidget::enter(){
     if(lineEdit_1->text().isEmpty()){
@@ -34,6 +61,34 @@ void ManagerRenYuanAddWidget::enter(){
     else if(lineEdit_2->text().isEmpty()){
         QMessageBox::information(this,tr("错误"),tr("密码不能为空!"),QMessageBox::Ok);
         lineEdit_2->setFocus();
+    }
+    else{
+        QString accountNum=lineEdit_1->text();
+        QString password=lineEdit_2->text();
+        quint16 type=qbg->checkedId();
+
+        QString filter=QString("account_num='%1'").arg(accountNum);
+        model->setTable("user");
+        model->setFilter(filter);
+        model->select();
+        if(model->rowCount()>0){
+            QMessageBox::information(this,tr("错误"),tr("账号已存在!"),QMessageBox::Ok);
+            lineEdit_1->setFocus();
+            this->clear();
+            return;
+        }
+        QSqlQuery query;
+        query.prepare("insert into user(account_num,u_type,u_password) "
+                      "values(:accountNum,:type,:password)");
+        query.bindValue(":accountNum",accountNum);
+        query.bindValue(":type",type);
+        query.bindValue(":password",password);
+        if(query.exec()){
+            QMessageBox::information(this,tr("成功"),tr("添加成功!"),QMessageBox::Ok);
+        }
+        else
+            QMessageBox::information(this,tr("失败")
+            ,tr("添加失败:%1!").arg(model->lastError().text()),QMessageBox::Ok);
     }
 }
 void ManagerRenYuanAddWidget::clear(){

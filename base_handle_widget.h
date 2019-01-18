@@ -1,5 +1,5 @@
-#ifndef BASEADDWIDGET_H
-#define BASEADDWIDGET_H
+#ifndef BASEHANDLEWIDGET_H
+#define BASEHANDLEWIDGET_H
 
 #include <QLabel>
 #include <QObject>
@@ -9,11 +9,11 @@
 #include <QHBoxLayout>
 #include <QVBoxLayout>
 
-class BaseAddWidget : public QWidget
+class BaseHandleWidget : public QWidget
 {
     Q_OBJECT
 public:
-    explicit BaseAddWidget(QWidget *parent = 0);
+    explicit BaseHandleWidget(QWidget *parent = 0);
 protected:
     QPushButton* enter_btn;
     QPushButton* clear_btn;
@@ -25,4 +25,4 @@ protected slots:
     void clear();
 };
 
-#endif // BASEADDWIDGET_H
+#endif // BASEHANDLEWIDGET_H

@@ -1,5 +1,5 @@
-#ifndef MANAGERRENYUANADDWIDGET_H
-#define MANAGERRENYUANADDWIDGET_H
+#ifndef MANAGER_RENYUAN_EDIT_WIDGET_H
+#define MANAGER_RENYUAN_EDIT_WIDGET_H
 
 #include <QLabel>
 #include <QButtonGroup>
@@ -8,11 +8,11 @@
 #include <QHBoxLayout>
 #include <QSqlTableModel>
 #include "base_handle_widget.h"
-
-class ManagerRenYuanAddWidget : public BaseHandleWidget
+class ManagerRenYuanEditWidget : public BaseHandleWidget
 {
 public:
-    ManagerRenYuanAddWidget();
+    ManagerRenYuanEditWidget();
+    void loadData(const QString &accountNum);
 private:
     QLabel *label_1,*label_2;
     QLineEdit *lineEdit_1,*lineEdit_2;
@@ -25,4 +25,4 @@ private slots:
     void clear();
 };
 
-#endif // MANAGERRENYUANADDWIDGET_H
+#endif // MANAGER_RENYUAN_EDIT_WIDGET_H

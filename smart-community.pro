@@ -27,21 +27,23 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += main.cpp\
     sqlmanager.cpp \
-    base_add_widget.cpp \
     base_manage_widget.cpp \
     login_dialog.cpp \
     manager_form.cpp \
     manager_renyuan_add_widget.cpp \
-    manager_renyuan_manage_widget.cpp
+    manager_renyuan_manage_widget.cpp \
+    base_handle_widget.cpp \
+    manager_renyuan_edit_widget.cpp
 
 HEADERS  += \
     sqlmanager.h \
-    base_add_widget.h \
     base_manage_widget.h \
     login_dialog.h \
     manager_form.h \
     manager_renyuan_add_widget.h \
-    manager_renyuan_manage_widget.h
+    manager_renyuan_manage_widget.h \
+    base_handle_widget.h \
+    manager_renyuan_edit_widget.h
 
 FORMS    += \
     logindialog.ui
