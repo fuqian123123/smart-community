@@ -1,8 +1,8 @@
 #include <QWidget>
-#include "managerform.h"
+#include "manager_form.h"
 
 /*管理员主界面*/
-MannagerForm::MannagerForm(QWidget *parent) :
+ManagerForm::ManagerForm(QWidget *parent) :
     QWidget(parent)
 {
     this->resize(800,500);
@@ -19,10 +19,9 @@ MannagerForm::MannagerForm(QWidget *parent) :
     h_layout->addWidget(h_btn1);
     h_layout->addWidget(h_btn2);
     //页面中部
-    bmw=new BaseManageWidget;
-    bmw->init("user");
+    mrymw=new ManagerRenYuanManageWidget;
     c_stackedWidget=new QStackedWidget(this);
-    c_stackedWidget->addWidget(bmw);
+    c_stackedWidget->addWidget(mrymw);
     //页面底部
     b_btn=new QPushButton;
     b_btn->setText("退出");
@@ -34,17 +33,16 @@ MannagerForm::MannagerForm(QWidget *parent) :
     layout->addWidget(b_btn);
 
     //信号和槽关联
-    connect(b_btn,QPushButton::clicked,this,on_b_btn_clicked);
+    connect(b_btn,QPushButton::clicked,this,quit);
 
     /*layout->setMargin(0);
     layout->setSpacing(15);
     layout->setContentsMargins(10,10,10,10);*/
 }
-void MannagerForm::on_b_btn_clicked(){
+void ManagerForm::quit(){
     exit(0);
 }
 
-MannagerForm::~MannagerForm(){
+ManagerForm::~ManagerForm(){
 
 }
-

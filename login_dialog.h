@@ -4,7 +4,7 @@
 #include <QDialog>
 #include <QButtonGroup>
 #include <QSqlTableModel>
-#include "managerform.h"
+#include "manager_form.h"
 
 namespace Ui {
 class LoginDialog;
@@ -20,15 +20,13 @@ public:
 
 private slots:
     void on_quitBtn_clicked();
-
     void on_loginBtn_clicked();
 
 private:
     Ui::LoginDialog *ui;
     QButtonGroup* qbg;
     QSqlTableModel *model;
-    MannagerForm* mf;
-
+    ManagerForm* mf;
 };
 
 #endif // LOGINDIALOG_H

@@ -1,4 +1,4 @@
-#include "baseaddwidget.h"
+#include "base_add_widget.h"
 
 BaseAddWidget::BaseAddWidget(QWidget *parent) : QWidget(parent)
 {
@@ -13,17 +13,11 @@ BaseAddWidget::BaseAddWidget(QWidget *parent) : QWidget(parent)
     b_layout->addWidget(enter_btn);
     b_layout->addWidget(clear_btn);
     b_layout->setMargin(10);
-
-    //信号和槽关联
-    connect(enter_btn,QPushButton::clicked,this,enter);
-    connect(clear_btn,QPushButton::clicked,this,clear);
 }
 void BaseAddWidget::init(){
-
 }
-void BaseAddWidget::enter(){
 
+void BaseAddWidget::enter(){
 }
 void BaseAddWidget::clear(){
-
 }

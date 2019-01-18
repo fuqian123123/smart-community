@@ -1,8 +1,8 @@
 #include <QMessageBox>
 #include <QSqlDatabase>
-#include "logindialog.h"
+#include "login_dialog.h"
 #include "ui_logindialog.h"
-#include "managerform.h"
+#include "manager_form.h"
 
 /*登录页面*/
 LoginDialog::LoginDialog(QWidget *parent) :
@@ -64,7 +64,7 @@ void LoginDialog::on_loginBtn_clicked()
             switch (type) {
             //管理员
             case 1:
-                mf=new MannagerForm;
+                mf=new ManagerForm;
                 mf->show();
                 break;
             //工作人员

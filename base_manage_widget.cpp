@@ -1,6 +1,6 @@
 #include <QHeaderView>
 #include <QApplication>
-#include "basemanagewidget.h"
+#include "base_manage_widget.h"
 
 BaseManageWidget::BaseManageWidget(QWidget *parent) :
     QWidget(parent)
@@ -25,13 +25,8 @@ BaseManageWidget::BaseManageWidget(QWidget *parent) :
     layout->addWidget(tableView);
     layout->addLayout(b_layout);
 
-    //信号和槽关联
-    connect(b_btn_1,QPushButton::clicked,this,add);
-    connect(b_btn_2,QPushButton::clicked,this,edit);
-    connect(b_btn_3,QPushButton::clicked,this,detail);
-
 }
-void BaseManageWidget::init(const QString &tableName){
+void BaseManageWidget::loadData(const QString &tableName){
     model->setTable(tableName);
     //model->setEditStrategy(QSqlTableModel::OnManualSubmit);
     model->select();
@@ -40,15 +35,13 @@ void BaseManageWidget::init(const QString &tableName){
     tableView->setEditTriggers(QAbstractItemView::NoEditTriggers);
     tableView->show();
 }
+void BaseManageWidget::init(){
+}
 void BaseManageWidget::add(){
-    mryaw=new MannagerRenYuanAddWidget;
-    mryaw->show();
 }
 void BaseManageWidget::edit(){
-    qDebug("edit");
 }
 void BaseManageWidget::detail(){
-    qDebug("detail");
 }
 
 BaseManageWidget::~BaseManageWidget()

@@ -1,7 +1,7 @@
 #include <QApplication>
-#include "logindialog.h"
+#include "login_dialog.h"
 #include "sqlmanager.h"
-#include "managerform.h"
+#include "manager_form.h"
 
 int main(int argc, char *argv[])
 {

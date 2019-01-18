@@ -1,20 +1,20 @@
-#ifndef MANNAGERFORM_H
-#define MANNAGERFORM_H
+#ifndef MANAGERFORM_H
+#define MANAGERFORM_H
 
 #include <QWidget>
 #include <QPushButton>
 #include <QLabel>
 #include <QVBoxLayout>
 #include <QStackedWidget>
-#include "basemanagewidget.h"
+#include "manager_renyuan_manage_widget.h"
 
-class MannagerForm : public QWidget
+class ManagerForm : public QWidget
 {
     Q_OBJECT
 
 public:
-    explicit MannagerForm(QWidget *parent = 0);
-    ~MannagerForm();
+    explicit ManagerForm(QWidget *parent = 0);
+    ~ManagerForm();
 private:
     QLabel* h_label;
     QPushButton* h_btn1;
@@ -22,9 +22,9 @@ private:
     QPushButton* b_btn;
     QVBoxLayout* layout;
     QHBoxLayout* h_layout;
-    BaseManageWidget *bmw;
+    ManagerRenYuanManageWidget *mrymw;
     QStackedWidget* c_stackedWidget;
 private slots:
-    void on_b_btn_clicked();
+    void quit();
 };
-#endif // MANNAGERFORM_H
+#endif // MANAGERFORM_H

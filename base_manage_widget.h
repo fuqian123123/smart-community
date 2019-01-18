@@ -6,7 +6,7 @@
 #include <QVBoxLayout>
 #include <QTableView>
 #include <QSqlTableModel>
-#include "managerrenyuanaddwidget.h"
+#include "manager_renyuan_add_widget.h"
 
 
 class BaseManageWidget : public QWidget
@@ -15,12 +15,7 @@ class BaseManageWidget : public QWidget
 
 public:
     explicit BaseManageWidget(QWidget *parent = 0);
-    void init(const QString &tableName);
     ~BaseManageWidget();
-public slots:
-    void add();
-    void edit();
-    void detail();
 protected:
     QPushButton* b_btn_1;
     QPushButton* b_btn_2;
@@ -29,7 +24,12 @@ protected:
     QVBoxLayout* layout;
     QHBoxLayout* b_layout;
     QSqlTableModel* model;
-    MannagerRenYuanAddWidget* mryaw;
+    void init();
+    void loadData(const QString &tableName);
+protected slots:
+    void add();
+    void edit();
+    void detail();
 };
 
 #endif // BASEMANAGEWIDGET_H
