@@ -2,9 +2,12 @@
 #define BASEMANAGEWIDGET_H
 
 #include <QWidget>
-#include <QTableWidget>
 #include <QPushButton>
 #include <QVBoxLayout>
+#include <QTableView>
+#include <QSqlTableModel>
+#include "managerrenyuanaddwidget.h"
+
 
 class BaseManageWidget : public QWidget
 {
@@ -12,15 +15,21 @@ class BaseManageWidget : public QWidget
 
 public:
     explicit BaseManageWidget(QWidget *parent = 0);
+    void init(const QString &tableName);
     ~BaseManageWidget();
-
-private:
-    QPushButton* b_btn1;
-    QPushButton* b_btn2;
-    QPushButton* b_btn3;
-    QTableWidget* tableWidget;
+public slots:
+    void add();
+    void edit();
+    void detail();
+protected:
+    QPushButton* b_btn_1;
+    QPushButton* b_btn_2;
+    QPushButton* b_btn_3;
+    QTableView* tableView;
     QVBoxLayout* layout;
     QHBoxLayout* b_layout;
+    QSqlTableModel* model;
+    MannagerRenYuanAddWidget* mryaw;
 };
 
 #endif // BASEMANAGEWIDGET_H

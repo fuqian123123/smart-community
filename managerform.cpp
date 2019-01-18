@@ -1,5 +1,5 @@
 #include <QWidget>
-#include "mannagerform.h"
+#include "managerform.h"
 
 /*管理员主界面*/
 MannagerForm::MannagerForm(QWidget *parent) :
@@ -20,6 +20,7 @@ MannagerForm::MannagerForm(QWidget *parent) :
     h_layout->addWidget(h_btn2);
     //页面中部
     bmw=new BaseManageWidget;
+    bmw->init("user");
     c_stackedWidget=new QStackedWidget(this);
     c_stackedWidget->addWidget(bmw);
     //页面底部
@@ -32,10 +33,18 @@ MannagerForm::MannagerForm(QWidget *parent) :
     layout->addWidget(c_stackedWidget);
     layout->addWidget(b_btn);
 
+    //信号和槽关联
+    connect(b_btn,QPushButton::clicked,this,on_b_btn_clicked);
 
     /*layout->setMargin(0);
     layout->setSpacing(15);
     layout->setContentsMargins(10,10,10,10);*/
 }
-MannagerForm::~MannagerForm(){}
+void MannagerForm::on_b_btn_clicked(){
+    exit(0);
+}
+
+MannagerForm::~MannagerForm(){
+
+}
 

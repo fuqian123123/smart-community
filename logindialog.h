@@ -4,7 +4,7 @@
 #include <QDialog>
 #include <QButtonGroup>
 #include <QSqlTableModel>
-#include "mannagerform.h"
+#include "managerform.h"
 
 namespace Ui {
 class LoginDialog;

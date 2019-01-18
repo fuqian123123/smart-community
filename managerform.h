@@ -24,6 +24,7 @@ private:
     QHBoxLayout* h_layout;
     BaseManageWidget *bmw;
     QStackedWidget* c_stackedWidget;
+private slots:
+    void on_b_btn_clicked();
 };
-
 #endif // MANNAGERFORM_H

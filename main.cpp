@@ -1,13 +1,13 @@
 #include <QApplication>
 #include "logindialog.h"
-#include "sqlmannager.h"
-#include "mannagerform.h"
+#include "sqlmanager.h"
+#include "managerform.h"
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    SQLMannager sqlmannager("39.107.243.32","root","mysql--123","smart_community");
-    sqlmannager.Connect();
+    SQLManager sqlmanager("39.107.243.32","root","mysql--123","smart_community");
+    sqlmanager.Connect();
 
     LoginDialog ld;
     ld.show();

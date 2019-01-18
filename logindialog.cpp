@@ -2,7 +2,7 @@
 #include <QSqlDatabase>
 #include "logindialog.h"
 #include "ui_logindialog.h"
-#include "mannagerform.h"
+#include "managerform.h"
 
 /*登录页面*/
 LoginDialog::LoginDialog(QWidget *parent) :
