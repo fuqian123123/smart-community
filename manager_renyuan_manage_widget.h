@@ -5,6 +5,7 @@
 #include "base_manage_widget.h"
 #include "manager_renyuan_add_widget.h"
 #include "manager_renyuan_edit_widget.h"
+#include "manager_renyuan_detail_widget.h"
 
 class ManagerRenYuanManageWidget : public BaseManageWidget
 {
@@ -14,6 +15,7 @@ public:
 private:
     ManagerRenYuanAddWidget* mryaw;
     ManagerRenYuanEditWidget* mryew;
+    ManagerRenYuanDetailWidget* mrydw;
     void init();
 private slots:
     void add();

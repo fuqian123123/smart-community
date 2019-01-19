@@ -12,14 +12,7 @@ BaseManageWidget::BaseManageWidget(QWidget *parent) :
     b_btn_1=new QPushButton;
     b_btn_2=new QPushButton;
     b_btn_3=new QPushButton;
-    b_btn_1->setText("添加");
-    b_btn_2->setText("修改");
-    b_btn_3->setText("详情");
-
     b_layout=new QHBoxLayout;
-    b_layout->addWidget(b_btn_1);
-    b_layout->addWidget(b_btn_2);
-    b_layout->addWidget(b_btn_3);
 
     tableView=new QTableView;
 

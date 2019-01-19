@@ -63,6 +63,9 @@ void ManagerRenYuanEditWidget::loadData(const QString &accountNum){
         lineEdit_2->setText(password);
         qbg->button(b_id)->setChecked(true);
     }
+    else{
+        QMessageBox::information(this,tr("错误"),tr("加载失败!"),QMessageBox::Ok);
+    }
 }
 
 void ManagerRenYuanEditWidget::enter(){

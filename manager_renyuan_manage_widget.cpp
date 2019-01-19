@@ -2,9 +2,17 @@
 
 ManagerRenYuanManageWidget::ManagerRenYuanManageWidget()
 {
+    b_btn_1->setText("添加");
+    b_btn_2->setText("修改");
+    b_btn_3->setText("详情");
+
+    b_layout->addWidget(b_btn_1);
+    b_layout->addWidget(b_btn_2);
+    b_layout->addWidget(b_btn_3);
     //为关联信号和槽做准备
     mryaw=new ManagerRenYuanAddWidget;
     mryew=new ManagerRenYuanEditWidget;
+    mrydw=new ManagerRenYuanDetailWidget;
 
     //信号和槽关联
     connect(b_btn_1,QPushButton::clicked,this,add);
@@ -19,6 +27,9 @@ void ManagerRenYuanManageWidget::refreshData(){
 }
 void ManagerRenYuanManageWidget::init(){
     this->loadData("user");
+    model->setHeaderData(0, Qt::Orientation::Horizontal, "账号");
+    model->setHeaderData(1, Qt::Orientation::Horizontal, "类型");
+    model->setHeaderData(2, Qt::Orientation::Horizontal, "密码");
 }
 void ManagerRenYuanManageWidget::add(){
     mryaw->setWindowTitle("添加");
@@ -36,17 +47,16 @@ void ManagerRenYuanManageWidget::edit(){
     mryew->setWindowTitle("修改");
     mryew->setWindowModality(Qt::ApplicationModal);
     mryew->show();
-    /*if(model->submitAll()){
-        if(model->database().commit())
-            QMessageBox::information(this,tr("成功"),tr("添加成功!"),QMessageBox::Ok);
-        else
-            qDebug()<<model->lastError().text();
-        this->clear();
-    }
-    else{
-        model->database().rollback();
-        QMessageBox::information(this,tr("失败")
-        ,tr("添加失败:%1!").arg(model->lastError().text()),QMessageBox::Ok);
-    }*/
 }
-void ManagerRenYuanManageWidget::detail(){}
+void ManagerRenYuanManageWidget::detail(){
+    int rowNum=tableView->currentIndex().row();
+    QAbstractItemModel *qaim = tableView->model();
+    QModelIndex qmi=qaim->index(rowNum,0);
+    QVariant qv=qaim->data(qmi);
+    QString accountNum=qv.toString();
+
+    mrydw->loadData(accountNum);
+    mrydw->setWindowTitle("详情");
+    mrydw->setWindowModality(Qt::ApplicationModal);
+    mrydw->show();
+}
