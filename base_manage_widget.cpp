@@ -6,7 +6,8 @@
 BaseManageWidget::BaseManageWidget(QWidget *parent) :
     QWidget(parent)
 {
-    model=new QSqlTableModel(this);
+    q_model=new QSqlQueryModel;
+
     layout=new QVBoxLayout(this);
 
     b_btn_1=new QPushButton;
@@ -20,14 +21,11 @@ BaseManageWidget::BaseManageWidget(QWidget *parent) :
     layout->addLayout(b_layout);
 
 }
-void BaseManageWidget::loadData(const QString &tableName){
-    model->setTable(tableName);
-    //model->setEditStrategy(QSqlTableModel::OnManualSubmit);
-    model->select();
+void BaseManageWidget::load(const QString &queryStr){
+    q_model->setQuery(queryStr);
     tableView->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
-    tableView->setModel(model);
     tableView->setEditTriggers(QAbstractItemView::NoEditTriggers);
-    tableView->show();
+    tableView->setModel(q_model);
 }
 
 void BaseManageWidget::init(){}

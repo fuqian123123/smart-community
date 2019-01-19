@@ -2,6 +2,7 @@
 #define MANAGERRENYUANMANAGEWIDGET_H
 
 #include <QDebug>
+#include <QPushButton>
 #include "base_manage_widget.h"
 #include "manager_renyuan_add_widget.h"
 #include "manager_renyuan_edit_widget.h"
@@ -16,11 +17,14 @@ private:
     ManagerRenYuanAddWidget* mryaw;
     ManagerRenYuanEditWidget* mryew;
     ManagerRenYuanDetailWidget* mrydw;
+    QPushButton *b_btn_4;
     void init();
+    void setAccountNum(QString &str);
 private slots:
     void add();
     void edit();
     void detail();
+    void del();
     void refreshData();
 };
 

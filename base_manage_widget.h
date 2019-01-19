@@ -5,7 +5,7 @@
 #include <QPushButton>
 #include <QVBoxLayout>
 #include <QTableView>
-#include <QSqlTableModel>
+#include <QSqlQueryModel>
 
 
 class BaseManageWidget : public QWidget
@@ -22,9 +22,9 @@ protected:
     QTableView* tableView;
     QVBoxLayout* layout;
     QHBoxLayout* b_layout;
-    QSqlTableModel* model;
+    QSqlQueryModel* q_model;
     void init();
-    void loadData(const QString &tableName);
+    void load(const QString &queryStr);
 protected slots:
     void add();
     void edit();

@@ -23,12 +23,19 @@ void ManagerKaoQinManageWidget::refreshData(){
 }
 
 void ManagerKaoQinManageWidget::init(){
-    this->loadData("kaoqin");
-    model->setHeaderData(0, Qt::Orientation::Horizontal, "请假号");
-    model->setHeaderData(1, Qt::Orientation::Horizontal, "账号");
-    model->setHeaderData(2, Qt::Orientation::Horizontal, "类型");
-    model->setHeaderData(3, Qt::Orientation::Horizontal, "日期");
-    model->setHeaderData(4, Qt::Orientation::Horizontal, "批准情况");
+    QString queryStr=QString("select k_id,account_num"
+                             " ,case k_type when 1 then '请假'"
+                             " when 2 then '销假' end as k_type"
+                             " ,k_date "
+                             " ,case k_allow when 0 then '未批准'"
+                             " when 1 then '已批准' end as k_allow"
+                             " from kaoqin ");
+    this->load(queryStr);
+    q_model->setHeaderData(0, Qt::Orientation::Horizontal, "请假号");
+    q_model->setHeaderData(1, Qt::Orientation::Horizontal, "账号");
+    q_model->setHeaderData(2, Qt::Orientation::Horizontal, "类型");
+    q_model->setHeaderData(3, Qt::Orientation::Horizontal, "日期");
+    q_model->setHeaderData(4, Qt::Orientation::Horizontal, "批准情况");
 }
 int ManagerKaoQinManageWidget::getKid(){
     int rowNum=tableView->currentIndex().row();
