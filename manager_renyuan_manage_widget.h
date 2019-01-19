@@ -8,6 +8,7 @@
 
 class ManagerRenYuanManageWidget : public BaseManageWidget
 {
+    Q_OBJECT
 public:
     ManagerRenYuanManageWidget();
 private:
@@ -18,6 +19,7 @@ private slots:
     void add();
     void edit();
     void detail();
+    void refreshData();
 };
 
 #endif // MANAGERRENYUANMANAGEWIDGET_H

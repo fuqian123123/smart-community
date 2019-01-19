@@ -1,5 +1,6 @@
 #include <QDebug>
 #include <QSqlQuery>
+#include <QMessageBox>
 #include "manager_renyuan_edit_widget.h"
 
 ManagerRenYuanEditWidget::ManagerRenYuanEditWidget()
@@ -11,6 +12,7 @@ ManagerRenYuanEditWidget::ManagerRenYuanEditWidget()
     label_2->setText("密码");
     lineEdit_1=new QLineEdit;
     lineEdit_2=new QLineEdit;
+    lineEdit_1->setFocusPolicy(Qt::NoFocus);//账号不可修改
     radioBtn_1=new QRadioButton;
     radioBtn_2=new QRadioButton;
     radioBtn_3=new QRadioButton;
@@ -47,10 +49,12 @@ ManagerRenYuanEditWidget::ManagerRenYuanEditWidget()
     //model初始化
     model=new QSqlTableModel(this);
 }
+void ManagerRenYuanEditWidget::sendSignal(){
+    emit editUser();
+}
 void ManagerRenYuanEditWidget::loadData(const QString &accountNum){
     QSqlQuery query;
-    //qDebug()<<accountNum;
-    bool flag=query.exec(QString("select u_type,u_password from user where account_num=%1").arg(accountNum));
+    bool flag=query.exec(QString("select u_type,u_password from user where account_num='%1'").arg(accountNum));
     if(flag){
         query.next();
         int b_id=query.value(0).toInt();
@@ -62,8 +66,24 @@ void ManagerRenYuanEditWidget::loadData(const QString &accountNum){
 }
 
 void ManagerRenYuanEditWidget::enter(){
-
+    if(lineEdit_2->text().isEmpty()){
+        QMessageBox::information(this,tr("错误"),tr("密码不能为空!"),QMessageBox::Ok);
+        return;
+    }
+    QString accountNum=lineEdit_1->text();
+    QString password=lineEdit_2->text();
+    int type=qbg->checkedId();
+    QString str=QString("update user set u_type=%1,u_password='%2' where account_num='%3'").arg(type).arg(password).arg(accountNum);
+    QSqlQuery query;
+    if(query.exec(str)){
+        QMessageBox::information(this,tr("成功"),tr("修改成功!"),QMessageBox::Ok);
+    }
+    else{
+        QMessageBox::information(this,tr("失败"),tr("修改失败!"),QMessageBox::Ok);
+    }
+    //发送信号，要求更新列表
+    this->sendSignal();
 }
 void ManagerRenYuanEditWidget::clear(){
-
+    lineEdit_2->setText("");
 }

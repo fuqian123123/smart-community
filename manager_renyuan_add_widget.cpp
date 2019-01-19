@@ -53,6 +53,9 @@ ManagerRenYuanAddWidget::ManagerRenYuanAddWidget()
     //model初始化
     model=new QSqlTableModel(this);
 }
+void ManagerRenYuanAddWidget::sendSignal(){
+    emit newUser();
+}
 void ManagerRenYuanAddWidget::enter(){
     if(lineEdit_1->text().isEmpty()){
         QMessageBox::information(this,tr("错误"),tr("账号不能为空!"),QMessageBox::Ok);
@@ -90,6 +93,8 @@ void ManagerRenYuanAddWidget::enter(){
             QMessageBox::information(this,tr("失败")
             ,tr("添加失败:%1!").arg(model->lastError().text()),QMessageBox::Ok);
     }
+    //发送信号，要求更新列表
+    this->sendSignal();
 }
 void ManagerRenYuanAddWidget::clear(){
     lineEdit_1->setText("");

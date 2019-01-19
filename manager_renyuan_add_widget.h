@@ -11,8 +11,12 @@
 
 class ManagerRenYuanAddWidget : public BaseHandleWidget
 {
+    Q_OBJECT
 public:
     ManagerRenYuanAddWidget();
+    void sendSignal();
+signals:
+    void newUser();
 private:
     QLabel *label_1,*label_2;
     QLineEdit *lineEdit_1,*lineEdit_2;

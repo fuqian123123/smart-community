@@ -10,9 +10,13 @@
 #include "base_handle_widget.h"
 class ManagerRenYuanEditWidget : public BaseHandleWidget
 {
+    Q_OBJECT
 public:
     ManagerRenYuanEditWidget();
     void loadData(const QString &accountNum);
+    void sendSignal();
+signals:
+    void editUser();
 private:
     QLabel *label_1,*label_2;
     QLineEdit *lineEdit_1,*lineEdit_2;

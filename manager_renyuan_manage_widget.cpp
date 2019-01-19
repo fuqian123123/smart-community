@@ -2,17 +2,25 @@
 
 ManagerRenYuanManageWidget::ManagerRenYuanManageWidget()
 {
+    //为关联信号和槽做准备
+    mryaw=new ManagerRenYuanAddWidget;
+    mryew=new ManagerRenYuanEditWidget;
+
     //信号和槽关联
     connect(b_btn_1,QPushButton::clicked,this,add);
     connect(b_btn_2,QPushButton::clicked,this,edit);
     connect(b_btn_3,QPushButton::clicked,this,detail);
+    connect(mryaw,&ManagerRenYuanAddWidget::newUser,this,refreshData);
+    connect(mryew,&ManagerRenYuanEditWidget::editUser,this,refreshData);
+    this->init();
+}
+void ManagerRenYuanManageWidget::refreshData(){
     this->init();
 }
 void ManagerRenYuanManageWidget::init(){
     this->loadData("user");
 }
 void ManagerRenYuanManageWidget::add(){
-    mryaw=new ManagerRenYuanAddWidget;
     mryaw->setWindowTitle("添加");
     mryaw->setWindowModality(Qt::ApplicationModal);
     mryaw->show();
@@ -24,7 +32,6 @@ void ManagerRenYuanManageWidget::edit(){
     QVariant qv=qaim->data(qmi);
     QString accountNum=qv.toString();
 
-    mryew=new ManagerRenYuanEditWidget;
     mryew->loadData(accountNum);
     mryew->setWindowTitle("修改");
     mryew->setWindowModality(Qt::ApplicationModal);
