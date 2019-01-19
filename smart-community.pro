@@ -36,7 +36,8 @@ SOURCES += main.cpp\
     manager_renyuan_edit_widget.cpp \
     base_detail_widget.cpp \
     manager_renyuan_detail_widget.cpp \
-    manager_kaoqin_manage_widget.cpp
+    manager_kaoqin_manage_widget.cpp \
+    staff_form.cpp
 
 HEADERS  += \
     sqlmanager.h \
@@ -49,7 +50,8 @@ HEADERS  += \
     manager_renyuan_edit_widget.h \
     base_detail_widget.h \
     manager_renyuan_detail_widget.h \
-    manager_kaoqin_manage_widget.h
+    manager_kaoqin_manage_widget.h \
+    staff_form.h
 
 FORMS    += \
     logindialog.ui

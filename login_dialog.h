@@ -5,6 +5,7 @@
 #include <QButtonGroup>
 #include <QSqlTableModel>
 #include "manager_form.h"
+#include "staff_form.h"
 
 namespace Ui {
 class LoginDialog;
@@ -27,6 +28,7 @@ private:
     QButtonGroup* qbg;
     QSqlTableModel *model;
     ManagerForm* mf;
+    StaffForm* sf;
 };
 
 #endif // LOGINDIALOG_H

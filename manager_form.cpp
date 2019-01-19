@@ -38,10 +38,6 @@ ManagerForm::ManagerForm(QWidget *parent) :
     connect(b_btn,QPushButton::clicked,this,quit);
     connect(h_btn_1,QPushButton::clicked,this,checkoutRenYuan);
     connect(h_btn_2,QPushButton::clicked,this,checkoutKaoQin);
-
-    /*layout->setMargin(0);
-    layout->setSpacing(15);
-    layout->setContentsMargins(10,10,10,10);*/
 }
 void ManagerForm::quit(){
     exit(0);

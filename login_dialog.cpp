@@ -69,6 +69,8 @@ void LoginDialog::on_loginBtn_clicked()
                 break;
             //工作人员
             case 2:
+                sf=new StaffForm;
+                sf->show();
                 break;
             //业主
             case 3:

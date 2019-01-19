@@ -6,7 +6,6 @@
 #include <QVBoxLayout>
 #include <QTableView>
 #include <QSqlTableModel>
-#include "manager_renyuan_add_widget.h"
 
 
 class BaseManageWidget : public QWidget
