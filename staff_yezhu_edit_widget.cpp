@@ -37,8 +37,7 @@ void StaffYeZhuEditWidget::loadData(const QString &accountNum){
     bool flag=query.exec(QString("select u_password from user where account_num='%1'").arg(accountNum));
     if(flag){
         query.next();
-        int b_id=query.value(0).toInt();
-        QString password=query.value(1).toString();
+        QString password=query.value(0).toString();
         lineEdit_1->setText(accountNum);
         lineEdit_2->setText(password);
     }
@@ -54,8 +53,7 @@ void StaffYeZhuEditWidget::enter(){
     }
     QString accountNum=lineEdit_1->text();
     QString password=lineEdit_2->text();
-    int type=qbg->checkedId();
-    QString str=QString("update user set u_type=%1,u_password='%2' where account_num='%3'").arg(type).arg(password).arg(accountNum);
+    QString str=QString("update user set u_password='%1' where account_num='%2'").arg(password).arg(accountNum);
     QSqlQuery query;
     if(query.exec(str)){
         QMessageBox::information(this,tr("成功"),tr("修改成功!"),QMessageBox::Ok);

@@ -1,3 +1,4 @@
+#include <QMessageBox>
 #include "staff_yezhu_manage_widget.h"
 
 StaffYeZhuManageWidget::StaffYeZhuManageWidget()
@@ -16,25 +17,34 @@ StaffYeZhuManageWidget::StaffYeZhuManageWidget()
 
     //为关联信号和槽做准备
     syzaw=new StaffYeZhuAddWidget;
-    //mryew=new ManagerRenYuanEditWidget;
+    syzew=new StaffYeZhuEditWidget;
+    syzdw=new StaffYeZhuDetailWidget;
     //mrydw=new ManagerRenYuanDetailWidget;
 
-    //信号和槽关联
+    //点击按钮信号和槽，信息刷新信号和槽
     connect(b_btn_1,QPushButton::clicked,this,add);
     connect(b_btn_2,QPushButton::clicked,this,edit);
     connect(b_btn_3,QPushButton::clicked,this,detail);
     connect(b_btn_4,QPushButton::clicked,this,del);
     connect(syzaw,&StaffYeZhuAddWidget::newUser,this,refreshData);
-    //connect(mryew,&ManagerRenYuanEditWidget::editUser,this,refreshData);
+    connect(syzew,&StaffYeZhuEditWidget::editUser,this,refreshData);
     this->init();
 }
 void StaffYeZhuManageWidget::init(){
+    int type=3;
     QString queryStr=QString("select account_num"
                              " ,u_password "
-                             " from user where u_type=3 ");
+                             " from user where u_type=%1 ").arg(type);
     this->load(queryStr);
     q_model->setHeaderData(0, Qt::Orientation::Horizontal, "账号");
     q_model->setHeaderData(1, Qt::Orientation::Horizontal, "密码");
+}
+void StaffYeZhuManageWidget::setAccountNum(QString &str){
+    int rowNum=tableView->currentIndex().row();
+    QAbstractItemModel *qaim = tableView->model();
+    QModelIndex qmi=qaim->index(rowNum,0);
+    QVariant qv=qaim->data(qmi);
+    str=qv.toString();
 }
 void StaffYeZhuManageWidget::add(){
     syzaw->setWindowTitle("添加");
@@ -42,23 +52,23 @@ void StaffYeZhuManageWidget::add(){
     syzaw->show();
 }
 void StaffYeZhuManageWidget::edit(){
-    /*QString accountNum;
+    QString accountNum;
     setAccountNum(accountNum);
-    mryew->loadData(accountNum);
-    mryew->setWindowTitle("修改");
-    mryew->setWindowModality(Qt::ApplicationModal);
-    mryew->show();*/
+    syzew->loadData(accountNum);
+    syzew->setWindowTitle("修改");
+    syzew->setWindowModality(Qt::ApplicationModal);
+    syzew->show();
 }
 void StaffYeZhuManageWidget::detail(){
-    /*QString accountNum;
+    QString accountNum;
     setAccountNum(accountNum);
-    mrydw->loadData(accountNum);
-    mrydw->setWindowTitle("详情");
-    mrydw->setWindowModality(Qt::ApplicationModal);
-    mrydw->show();*/
+    syzdw->loadData(accountNum);
+    syzdw->setWindowTitle("详情");
+    syzdw->setWindowModality(Qt::ApplicationModal);
+    syzdw->show();
 }
 void StaffYeZhuManageWidget::del(){
-    /*QMessageBox::StandardButton reply;
+    QMessageBox::StandardButton reply;
     reply = QMessageBox::warning(this, "警告", "确定删除?", QMessageBox::Yes | QMessageBox::No);
     if(reply == QMessageBox::No){
         return ;
@@ -67,7 +77,7 @@ void StaffYeZhuManageWidget::del(){
     setAccountNum(accountNum);
     QString queryStr=QString("delete from user where account_num='%1' ").arg(accountNum);
     q_model->setQuery(queryStr);
-    this->refreshData();*/
+    this->refreshData();
 }
 void StaffYeZhuManageWidget::refreshData(){
     this->init();

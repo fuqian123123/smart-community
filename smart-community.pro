@@ -40,7 +40,8 @@ SOURCES += main.cpp\
     staff_form.cpp \
     staff_yezhu_manage_widget.cpp \
     staff_yezhu_add_widget.cpp \
-    staff_yezhu_edit_widget.cpp
+    staff_yezhu_edit_widget.cpp \
+    staff_yezhu_detail_widget.cpp
 
 HEADERS  += \
     sqlmanager.h \
@@ -57,7 +58,8 @@ HEADERS  += \
     staff_form.h \
     staff_yezhu_manage_widget.h \
     staff_yezhu_add_widget.h \
-    staff_yezhu_edit_widget.h
+    staff_yezhu_edit_widget.h \
+    staff_yezhu_detail_widget.h
 
 FORMS    += \
     logindialog.ui

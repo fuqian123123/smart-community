@@ -5,6 +5,8 @@
 #include <QPushButton>
 #include "base_manage_widget.h"
 #include "staff_yezhu_add_widget.h"
+#include "staff_yezhu_edit_widget.h"
+#include "staff_yezhu_detail_widget.h"
 
 //class StaffYeZhuAddWidget;
 class StaffYeZhuManageWidget : public BaseManageWidget
@@ -14,11 +16,11 @@ public:
     StaffYeZhuManageWidget();
 private:
     StaffYeZhuAddWidget *syzaw;
-    //ManagerRenYuanEditWidget* mryew;
-    //ManagerRenYuanDetailWidget* mrydw;
+    StaffYeZhuEditWidget *syzew;
+    StaffYeZhuDetailWidget *syzdw;
     QPushButton *b_btn_4;
     void init();
-    //void setAccountNum(QString &str);
+    void setAccountNum(QString &str);
 private slots:
     void add();
     void edit();
