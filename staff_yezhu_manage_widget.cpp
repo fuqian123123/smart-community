@@ -1,8 +1,10 @@
 #include <QMessageBox>
 #include "staff_yezhu_manage_widget.h"
 
+extern QString GLOBAL_ACCOUNT_NUM;
 StaffYeZhuManageWidget::StaffYeZhuManageWidget()
 {
+    qDebug()<<GLOBAL_ACCOUNT_NUM;
     b_btn_4=new QPushButton;
 
     b_btn_1->setText("添加");

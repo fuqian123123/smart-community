@@ -5,6 +5,7 @@
 #include "manager_form.h"
 
 /*登录页面*/
+QString GLOBAL_ACCOUNT_NUM;
 LoginDialog::LoginDialog(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::LoginDialog)
@@ -61,6 +62,7 @@ void LoginDialog::on_loginBtn_clicked()
         model->select();
         if(model->rowCount()>0){
             QMessageBox::information(this,tr("成功"),tr("登录成功!"),QMessageBox::Ok);
+            GLOBAL_ACCOUNT_NUM=ui->acntLineEdit->text();//记录登录人员的账号
             switch (type) {
             //管理员
             case 1:

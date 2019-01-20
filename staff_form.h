@@ -7,11 +7,14 @@
 #include <QVBoxLayout>
 #include <QStackedWidget>
 #include "staff_yezhu_manage_widget.h"
+#include "staff_kaoqin_manage_widget.h"
+
 class StaffForm : public QWidget
 {
     Q_OBJECT
 public:
     explicit StaffForm(QWidget *parent = 0);
+    void checkout(const int &num);
 private:
     QLabel* h_label;
     QPushButton* h_btn_1;
@@ -24,8 +27,11 @@ private:
     QHBoxLayout* h_layout;
     QStackedWidget* c_stackedWidget;
     StaffYeZhuManageWidget* syzmw;
+    StaffKaoQinManageWidget* skqmw;
 private slots:
     void quit();
+    void checkoutYeZhu();
+    void checkoutKaoQin();
 };
 
 #endif // STAFF_FORM_H

@@ -3,6 +3,7 @@
 
 #include <QMessageBox>
 #include <QSqlQuery>
+#include <QMessageBox>
 #include "base_manage_widget.h"
 class ManagerKaoQinManageWidget : public BaseManageWidget
 {
