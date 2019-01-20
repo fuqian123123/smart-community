@@ -25,7 +25,10 @@ StaffForm::StaffForm(QWidget *parent) : QWidget(parent)
     h_layout->addWidget(h_btn_4);
     h_layout->addWidget(h_btn_5);
     //页面中部
+    syzmw=new StaffYeZhuManageWidget;
     c_stackedWidget=new QStackedWidget(this);
+
+    c_stackedWidget->addWidget(syzmw);
     //页面底部
     b_btn=new QPushButton;
     b_btn->setText("退出");

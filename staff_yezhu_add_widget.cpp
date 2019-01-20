@@ -2,11 +2,11 @@
 #include <QSqlError>
 #include <QSqlQuery>
 #include <QDebug>
-#include "manager_renyuan_add_widget.h"
-#include "manager_renyuan_manage_widget.h"
+#include "staff_yezhu_add_widget.h"
+#include "staff_yezhu_manage_widget.h"
 
 /*人员添加弹出页面*/
-ManagerRenYuanAddWidget::ManagerRenYuanAddWidget()
+StaffYeZhuAddWidget::StaffYeZhuAddWidget()
 {
     //元素初始化
     label_1=new QLabel;
@@ -16,46 +16,27 @@ ManagerRenYuanAddWidget::ManagerRenYuanAddWidget()
     lineEdit_1=new QLineEdit;
     lineEdit_2=new QLineEdit;
     lineEdit_1->setFocus();
-    radioBtn_1=new QRadioButton;
-    radioBtn_2=new QRadioButton;
-    radioBtn_3=new QRadioButton;
-    radioBtn_1->setText("管理员");
-    radioBtn_2->setText("工作人员");
-    radioBtn_3->setText("业主");
-    radioBtn_1->setChecked(true);
-    qbg=new QButtonGroup;
-    qbg->addButton(radioBtn_1);
-    qbg->addButton(radioBtn_2);
-    qbg->addButton(radioBtn_3);
-    qbg->setId(radioBtn_1,1);
-    qbg->setId(radioBtn_2,2);
-    qbg->setId(radioBtn_3,3);
 
     layout_1=new QHBoxLayout;
     layout_2=new QHBoxLayout;
-    layout_3=new QHBoxLayout;
     layout_1->addWidget(label_1,2);
     layout_1->addWidget(lineEdit_1,4);
     layout_2->addWidget(label_2,2);
     layout_2->addWidget(lineEdit_2,4);
-    layout_3->addWidget(radioBtn_1);
-    layout_3->addWidget(radioBtn_2);
-    layout_3->addWidget(radioBtn_3);
 
     layout->addLayout(layout_1);
     layout->addLayout(layout_2);
-    layout->addLayout(layout_3);
     layout->addLayout(b_layout);
 
     //信号和槽关联
     connect(this->enter_btn,QPushButton::clicked,this,enter);
     connect(this->clear_btn,QPushButton::clicked,this,clear);
-
+    //model初始化
 }
-void ManagerRenYuanAddWidget::sendSignal(){
+void StaffYeZhuAddWidget::sendSignal(){
     emit newUser();
 }
-void ManagerRenYuanAddWidget::enter(){
+void StaffYeZhuAddWidget::enter(){
     if(lineEdit_1->text().isEmpty()){
         QMessageBox::information(this,tr("错误"),tr("账号不能为空!"),QMessageBox::Ok);
         lineEdit_1->setFocus();
@@ -67,10 +48,11 @@ void ManagerRenYuanAddWidget::enter(){
     else{
         QString accountNum=lineEdit_1->text();
         QString password=lineEdit_2->text();
-        quint16 type=qbg->checkedId();
+        quint16 type=3;
 
         QString filter=QString("account_num='%1'").arg(accountNum);
         QSqlTableModel *model=new QSqlTableModel;
+
         model->setTable("user");
         model->setFilter(filter);
         model->select();
@@ -96,7 +78,7 @@ void ManagerRenYuanAddWidget::enter(){
     //发送信号，要求更新列表
     this->sendSignal();
 }
-void ManagerRenYuanAddWidget::clear(){
+void StaffYeZhuAddWidget::clear(){
     lineEdit_1->setText("");
     lineEdit_2->setText("");
 }

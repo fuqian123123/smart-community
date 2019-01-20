@@ -6,6 +6,7 @@
 #include <QLabel>
 #include <QVBoxLayout>
 #include <QStackedWidget>
+#include "staff_yezhu_manage_widget.h"
 class StaffForm : public QWidget
 {
     Q_OBJECT
@@ -22,6 +23,7 @@ private:
     QVBoxLayout* layout;
     QHBoxLayout* h_layout;
     QStackedWidget* c_stackedWidget;
+    StaffYeZhuManageWidget* syzmw;
 private slots:
     void quit();
 };

@@ -22,6 +22,7 @@ ManagerForm::ManagerForm(QWidget *parent) :
     mrymw=new ManagerRenYuanManageWidget;
     mkqmw=new ManagerKaoQinManageWidget;
     c_stackedWidget=new QStackedWidget(this);
+
     c_stackedWidget->addWidget(mrymw);
     c_stackedWidget->addWidget(mkqmw);
     //页面底部

@@ -23,7 +23,6 @@ private:
     QHBoxLayout *layout_1,*layout_2,*layout_3;
     QRadioButton *radioBtn_1,*radioBtn_2,*radioBtn_3;
     QButtonGroup *qbg;
-    QSqlTableModel *model;
 private slots:
     void enter();
     void clear();
