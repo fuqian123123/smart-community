@@ -1,7 +1,3 @@
-#include <QMessageBox>
-#include <QSqlError>
-#include <QSqlQuery>
-#include <QDebug>
 #include "staff_yezhu_add_widget.h"
 #include "staff_yezhu_manage_widget.h"
 

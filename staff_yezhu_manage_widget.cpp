@@ -20,7 +20,6 @@ StaffYeZhuManageWidget::StaffYeZhuManageWidget()
     syzaw=new StaffYeZhuAddWidget;
     syzew=new StaffYeZhuEditWidget;
     syzdw=new StaffYeZhuDetailWidget;
-    //mrydw=new ManagerRenYuanDetailWidget;
 
     //点击按钮信号和槽，信息刷新信号和槽
     connect(b_btn_1,QPushButton::clicked,this,add);

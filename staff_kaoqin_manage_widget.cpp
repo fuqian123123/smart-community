@@ -3,17 +3,23 @@
 extern QString GLOBAL_ACCOUNT_NUM;
 StaffKaoQinManageWidget::StaffKaoQinManageWidget()
 {
+    b_btn_4=new QPushButton;
+    scqd=new StaffChuQinDetail;
+
     b_btn_1->setText("打卡");
     b_btn_2->setText("请假");
     b_btn_3->setText("销假");
+    b_btn_4->setText("月度出勤");
 
     b_layout->addWidget(b_btn_1);
     b_layout->addWidget(b_btn_2);
     b_layout->addWidget(b_btn_3);
+    b_layout->addWidget(b_btn_4);
     //为关联信号和槽做准备
     connect(b_btn_1,QPushButton::clicked,this,daka);
     connect(b_btn_2,QPushButton::clicked,this,qingjia);
     connect(b_btn_3,QPushButton::clicked,this,xiaojia);
+    connect(b_btn_4,QPushButton::clicked,this,chuqin);
 
     this->init();
 }
@@ -25,7 +31,9 @@ void StaffKaoQinManageWidget::init(){
                              " end as k_type"
                              " ,k_date "
                              " ,case k_allow when 0 then '未批准'"
-                             " when 1 then '已批准' end as k_allow"
+                             " when 1 then '已批准'"
+                             " when 2 then ''"
+                             " end as k_allow"
                              " from kaoqin"
                              " where account_num='%1'").arg(GLOBAL_ACCOUNT_NUM);
     this->load(queryStr);
@@ -57,16 +65,16 @@ void StaffKaoQinManageWidget::getTodayDate(QString &today){
     QDateTime current_date_time =QDateTime::currentDateTime();
     today =current_date_time.toString("yyyy-MM-dd");
 }
-void StaffKaoQinManageWidget::handleToday(const int &type){
+void StaffKaoQinManageWidget::handleToday(const int &type,const int &allowFlag){
     if(!isFree()){
         QMessageBox::information(this,tr("提示"),tr("今日已操作!"),QMessageBox::Ok);
         return;
     }
     QString today;
     getTodayDate(today);
-    QString str=QString("insert into kaoqin (account_num,k_type,k_date)"
-                        " values('%1',%2,'%3')").arg(GLOBAL_ACCOUNT_NUM)
-                        .arg(type).arg(today);
+    QString str=QString("insert into kaoqin (account_num,k_type,k_date,k_allow)"
+                        " values('%1',%2,'%3','%4')").arg(GLOBAL_ACCOUNT_NUM)
+                        .arg(type).arg(today).arg(allowFlag);
     QSqlQuery query;
     if(!query.exec(str)){
         qDebug()<<query.lastError().databaseText();
@@ -74,14 +82,20 @@ void StaffKaoQinManageWidget::handleToday(const int &type){
     }
 }
 void StaffKaoQinManageWidget::qingjia(){
-    handleToday(1);
+    handleToday(1,0);
     this->refreshData();
 }
 void StaffKaoQinManageWidget::xiaojia(){
-    handleToday(2);
+    handleToday(2,0);
     this->refreshData();
 }
 void StaffKaoQinManageWidget::daka(){
-    handleToday(3);
+    handleToday(3,2);
     this->refreshData();
+}
+void StaffKaoQinManageWidget::chuqin(){
+    scqd->loadData(GLOBAL_ACCOUNT_NUM);
+    scqd->setWindowTitle("本月出勤");
+    scqd->setWindowModality(Qt::ApplicationModal);
+    scqd->show();
 }

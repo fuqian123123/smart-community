@@ -45,7 +45,10 @@ SOURCES += main.cpp\
     staff_kaoqin_manage_widget.cpp \
     staff_chewei_manage_widget.cpp \
     staff_chewei_chuzu_widget.cpp \
-    manager_chuqin_manage_widget.cpp
+    manager_chuqin_manage_widget.cpp \
+    staff_chuqin_detail.cpp \
+    staff_chewei_add_widget.cpp \
+    staff_chewei_edit_widget.cpp
 
 HEADERS  += \
     sqlmanager.h \
@@ -67,7 +70,10 @@ HEADERS  += \
     staff_kaoqin_manage_widget.h \
     staff_chewei_manage_widget.h \
     staff_chewei_chuzu_widget.h \
-    manager_chuqin_manage_widget.h
+    manager_chuqin_manage_widget.h \
+    staff_chuqin_detail.h \
+    staff_chewei_add_widget.h \
+    staff_chewei_edit_widget.h
 
 FORMS    += \
     logindialog.ui

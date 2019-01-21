@@ -7,6 +7,10 @@
 #include <QLineEdit>
 #include <QHBoxLayout>
 #include <QSqlTableModel>
+#include <QMessageBox>
+#include <QSqlError>
+#include <QSqlQuery>
+#include <QDebug>
 #include "base_handle_widget.h"
 
 class StaffYeZhuAddWidget : public BaseHandleWidget
