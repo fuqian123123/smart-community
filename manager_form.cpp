@@ -13,18 +13,23 @@ ManagerForm::ManagerForm(QWidget *parent) :
     //页头按钮
     h_btn_1=new QPushButton;
     h_btn_2=new QPushButton;
+    h_btn_3=new QPushButton;
     h_btn_1->setText("人员管理");
     h_btn_2->setText("考勤管理");
+    h_btn_3->setText("月度出勤");
     h_layout=new QHBoxLayout();
     h_layout->addWidget(h_btn_1);
     h_layout->addWidget(h_btn_2);
+    h_layout->addWidget(h_btn_3);
     //页面中部
     mrymw=new ManagerRenYuanManageWidget;
     mkqmw=new ManagerKaoQinManageWidget;
+    mcqmw=new ManagerChuQinManageWidget;
     c_stackedWidget=new QStackedWidget(this);
 
     c_stackedWidget->addWidget(mrymw);
     c_stackedWidget->addWidget(mkqmw);
+    c_stackedWidget->addWidget(mcqmw);
     //页面底部
     b_btn=new QPushButton;
     b_btn->setText("退出");
@@ -39,6 +44,7 @@ ManagerForm::ManagerForm(QWidget *parent) :
     connect(b_btn,QPushButton::clicked,this,quit);
     connect(h_btn_1,QPushButton::clicked,this,checkoutRenYuan);
     connect(h_btn_2,QPushButton::clicked,this,checkoutKaoQin);
+    connect(h_btn_3,QPushButton::clicked,this,checkoutChuQin);
 }
 void ManagerForm::quit(){
     exit(0);
@@ -56,8 +62,13 @@ void ManagerForm::checkoutKaoQin(){
         index=1;
         c_stackedWidget->setCurrentIndex(index);
     }
+}void ManagerForm::checkoutChuQin(){
+    int index=c_stackedWidget->currentIndex();
+    if(index!=2){
+        index=2;
+        c_stackedWidget->setCurrentIndex(index);
+    }
 }
-
 ManagerForm::~ManagerForm(){
 
 }

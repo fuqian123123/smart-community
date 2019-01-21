@@ -33,12 +33,13 @@ void ManagerRenYuanManageWidget::refreshData(){
 }
 void ManagerRenYuanManageWidget::init(){
     QString queryStr=QString("select account_num"
-                             ",case u_type when 1 then '管理员' "
-                             "when 2 then '工作人员' "
-                             "else '业主' "
-                             "end as u_type "
-                             ",u_password "
-                             "from user ");
+                             " ,case u_type when 1 then '管理员' "
+                             " when 2 then '工作人员' "
+                             " else '业主' "
+                             " end as u_type "
+                             " ,u_password "
+                             " from user"
+                             " where u_type=2 ");
     this->load(queryStr);
     q_model->setHeaderData(0, Qt::Orientation::Horizontal, "账号");
     q_model->setHeaderData(1, Qt::Orientation::Horizontal, "所属人员");

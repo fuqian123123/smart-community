@@ -16,35 +16,16 @@ ManagerRenYuanAddWidget::ManagerRenYuanAddWidget()
     lineEdit_1=new QLineEdit;
     lineEdit_2=new QLineEdit;
     lineEdit_1->setFocus();
-    radioBtn_1=new QRadioButton;
-    radioBtn_2=new QRadioButton;
-    radioBtn_3=new QRadioButton;
-    radioBtn_1->setText("管理员");
-    radioBtn_2->setText("工作人员");
-    radioBtn_3->setText("业主");
-    radioBtn_1->setChecked(true);
-    qbg=new QButtonGroup;
-    qbg->addButton(radioBtn_1);
-    qbg->addButton(radioBtn_2);
-    qbg->addButton(radioBtn_3);
-    qbg->setId(radioBtn_1,1);
-    qbg->setId(radioBtn_2,2);
-    qbg->setId(radioBtn_3,3);
 
     layout_1=new QHBoxLayout;
     layout_2=new QHBoxLayout;
-    layout_3=new QHBoxLayout;
     layout_1->addWidget(label_1,2);
     layout_1->addWidget(lineEdit_1,4);
     layout_2->addWidget(label_2,2);
     layout_2->addWidget(lineEdit_2,4);
-    layout_3->addWidget(radioBtn_1);
-    layout_3->addWidget(radioBtn_2);
-    layout_3->addWidget(radioBtn_3);
 
     layout->addLayout(layout_1);
     layout->addLayout(layout_2);
-    layout->addLayout(layout_3);
     layout->addLayout(b_layout);
 
     //信号和槽关联
@@ -67,7 +48,7 @@ void ManagerRenYuanAddWidget::enter(){
     else{
         QString accountNum=lineEdit_1->text();
         QString password=lineEdit_2->text();
-        quint16 type=qbg->checkedId();
+        quint16 type=2;//只能添加工作人员
 
         QString filter=QString("account_num='%1'").arg(accountNum);
         QSqlTableModel *model=new QSqlTableModel;

@@ -27,10 +27,12 @@ StaffForm::StaffForm(QWidget *parent) : QWidget(parent)
     //页面中部
     syzmw=new StaffYeZhuManageWidget;
     skqmw=new StaffKaoQinManageWidget;
+    scwmw=new StaffCheWeiManageWidget;
     c_stackedWidget=new QStackedWidget(this);
 
     c_stackedWidget->addWidget(syzmw);
     c_stackedWidget->addWidget(skqmw);
+    c_stackedWidget->addWidget(scwmw);
     //页面底部
     b_btn=new QPushButton;
     b_btn->setText("退出");
@@ -45,6 +47,7 @@ StaffForm::StaffForm(QWidget *parent) : QWidget(parent)
     connect(b_btn,QPushButton::clicked,this,quit);
     connect(h_btn_1,QPushButton::clicked,this,checkoutYeZhu);
     connect(h_btn_2,QPushButton::clicked,this,checkoutKaoQin);
+    connect(h_btn_3,QPushButton::clicked,this,checkoutCheWei);
 
 }
 void StaffForm::checkout(const int &num){
@@ -59,6 +62,9 @@ void StaffForm::checkoutYeZhu(){
 }
 void StaffForm::checkoutKaoQin(){
     checkout(1);
+}
+void StaffForm::checkoutCheWei(){
+    checkout(2);
 }
 
 void StaffForm::quit(){

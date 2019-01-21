@@ -14,9 +14,6 @@ StaffKaoQinManageWidget::StaffKaoQinManageWidget()
     connect(b_btn_1,QPushButton::clicked,this,daka);
     connect(b_btn_2,QPushButton::clicked,this,qingjia);
     connect(b_btn_3,QPushButton::clicked,this,xiaojia);
-    //mryaw=new ManagerRenYuanAddWidget;
-    //mryew=new ManagerRenYuanEditWidget;
-    //mrydw=new ManagerRenYuanDetailWidget;
 
     this->init();
 }

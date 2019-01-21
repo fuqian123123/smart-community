@@ -42,7 +42,10 @@ SOURCES += main.cpp\
     staff_yezhu_add_widget.cpp \
     staff_yezhu_edit_widget.cpp \
     staff_yezhu_detail_widget.cpp \
-    staff_kaoqin_manage_widget.cpp
+    staff_kaoqin_manage_widget.cpp \
+    staff_chewei_manage_widget.cpp \
+    staff_chewei_chuzu_widget.cpp \
+    manager_chuqin_manage_widget.cpp
 
 HEADERS  += \
     sqlmanager.h \
@@ -61,7 +64,10 @@ HEADERS  += \
     staff_yezhu_add_widget.h \
     staff_yezhu_edit_widget.h \
     staff_yezhu_detail_widget.h \
-    staff_kaoqin_manage_widget.h
+    staff_kaoqin_manage_widget.h \
+    staff_chewei_manage_widget.h \
+    staff_chewei_chuzu_widget.h \
+    manager_chuqin_manage_widget.h
 
 FORMS    += \
     logindialog.ui

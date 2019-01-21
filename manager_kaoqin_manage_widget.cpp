@@ -4,10 +4,11 @@ ManagerKaoQinManageWidget::ManagerKaoQinManageWidget()
 {
     b_btn_1->setText("批准");
     b_btn_2->setText("驳回");
+    b_btn_3->setText("查看月度出勤");
 
     b_layout->addWidget(b_btn_1);
     b_layout->addWidget(b_btn_2);
-    b_layout->setMargin(20);
+    //b_layout->setMargin(20);
     //为关联信号和槽做准备
 
 
@@ -25,11 +26,14 @@ void ManagerKaoQinManageWidget::refreshData(){
 void ManagerKaoQinManageWidget::init(){
     QString queryStr=QString("select k_id,account_num"
                              " ,case k_type when 1 then '请假'"
-                             " when 2 then '销假' end as k_type"
+                             " when 2 then '销假'"
+                             " when 3 then '打卡'"
+                             " end as k_type"
                              " ,k_date "
                              " ,case k_allow when 0 then '未批准'"
                              " when 1 then '已批准' end as k_allow"
-                             " from kaoqin ");
+                             " from kaoqin"
+                             " where k_type=1 or k_type=2");
     this->load(queryStr);
     q_model->setHeaderData(0, Qt::Orientation::Horizontal, "请假号");
     q_model->setHeaderData(1, Qt::Orientation::Horizontal, "账号");
