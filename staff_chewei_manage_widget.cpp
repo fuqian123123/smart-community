@@ -23,6 +23,8 @@ StaffCheWeiManageWidget::StaffCheWeiManageWidget()
     scwew=new StaffCheWeiEditWidget;
     scwdw=new StaffCheWeiDetailWidget;
     scwsw=new StaffCheWeiSearchWidget;
+    bscwhw_1=new BaseStaffCheWeiHandleWidget;
+    bscwhw_2=new BaseStaffCheWeiHandleWidget;
 
     b_layout->addWidget(label_1,2);
     b_layout->addWidget(b_btn_1,3);
@@ -38,12 +40,12 @@ StaffCheWeiManageWidget::StaffCheWeiManageWidget()
     connect(b_btn_1,QPushButton::clicked,this,add);
     connect(b_btn_2,QPushButton::clicked,this,edit);
     connect(b_btn_3,QPushButton::clicked,this,search);
+    connect(b_btn_4,QPushButton::clicked,this,del);
     connect(b_btn_5,QPushButton::clicked,this,chuzu);
     connect(b_btn_6,QPushButton::clicked,this,chushou);
     connect(scwaw,&StaffCheWeiAddWidget::newCheWei,this,refreshData);
     connect(scwew,&StaffCheWeiEditWidget::editCheWei,this,refreshData);
     connect(scwsw,&StaffCheWeiSearchWidget::entered,this,receiveKey);
-    //connect(syzew,&StaffYeZhuEditWidget::editUser,this,refreshData);
 
     this->init();
 }
@@ -82,7 +84,8 @@ void StaffCheWeiManageWidget::init(){
                              " end as c_chongdian"
                              " ,c_price_1"
                              " ,c_price_2"
-                             " from chewei");
+                             " from chewei"
+                             " where c_del=0");
     this->load(queryStr);
     q_model->setHeaderData(0, Qt::Orientation::Horizontal, "车位号");
     q_model->setHeaderData(1, Qt::Orientation::Horizontal, "业主账号");
@@ -118,12 +121,64 @@ void StaffCheWeiManageWidget::search(){
     scwsw->show();
 }
 void StaffCheWeiManageWidget::del(){
-
+    QString key;
+    setMajorKey(key);
+    QSqlQuery query;
+    QString str=QString("select c_status from chewei"
+                        " where pp_num=%1").arg(key.toInt());
+    bool flag=query.exec(str);
+    if(!flag){
+        QMessageBox::information(this,tr("错误"),tr("加载失败!"),QMessageBox::Ok);
+        return ;
+    }
+    query.next();
+    if(query.value(0).toInt()!=0){
+        QMessageBox::information(this,tr("提示"),tr("已租售车位不可删除!"),QMessageBox::Ok);
+        return ;
+    }
+    QMessageBox::StandardButton reply;
+    reply = QMessageBox::warning(this, "警告", "确定删除?", QMessageBox::Yes | QMessageBox::No);
+    if(reply == QMessageBox::No){
+        return ;
+    }
+    QString str_2=QString("update chewei set c_del=1 where pp_num=%1").arg(key);
+    query.exec(str_2);
+    this->refreshData();
+}
+void StaffCheWeiManageWidget::handle(BaseStaffCheWeiHandleWidget &bscwhw,int type){
+    QString key;
+    QString info=type==1?"出租":"出售";
+    setMajorKey(key);
+    if(key==""){
+        QMessageBox::information(this,tr("提示"),tr("请选择车位!"),QMessageBox::Ok);
+        return ;
+    }
+    if(bscwhw.getStatus(key)==1){
+        QMessageBox::information(this,tr("提示"),tr("此车位为已租状态!"),QMessageBox::Ok);
+        return ;
+    }
+    else if(bscwhw.getStatus(key)==2){
+        QMessageBox::information(this,tr("提示"),tr("此车位为已售状态!"),QMessageBox::Ok);
+        return ;
+    }
+    if(!bscwhw.isApplied(key,type)){
+        QMessageBox::information(this,tr("提示"),tr("暂无业主申请租赁此车位!"),QMessageBox::Ok);
+        return ;
+    }
+    else{
+        if(bscwhw.handle(key,type)){
+            QMessageBox::information(this,tr("提示"),info+"成功!",QMessageBox::Ok);
+            this->refreshData();
+        }
+        else{
+            QMessageBox::information(this,tr("提示"),info+"失败!",QMessageBox::Ok);
+        }
+    }
 }
 
 void StaffCheWeiManageWidget::chuzu(){
-
+    handle(*bscwhw_1,1);
 }
 void StaffCheWeiManageWidget::chushou(){
-
+    handle(*bscwhw_2,2);
 }

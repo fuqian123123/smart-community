@@ -16,7 +16,6 @@ ManagerKaoQinManageWidget::ManagerKaoQinManageWidget()
     connect(b_btn_1,QPushButton::clicked,this,allow);
     connect(b_btn_2,QPushButton::clicked,this,reject);
     connect(this,editInfo,this,refreshData);
-    //connect(mryew,&ManagerRenYuanEditWidget::editUser,this,refreshData);
     this->init();
 }
 void ManagerKaoQinManageWidget::refreshData(){

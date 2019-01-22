@@ -9,6 +9,7 @@
 #include <QPushButton>
 #include <QMessageBox>
 #include "base_manage_widget.h"
+#include "base_staff_chewei_handle_widget.h"
 #include "staff_chewei_add_widget.h"
 #include "staff_chewei_edit_widget.h"
 #include "staff_chewei_detail_widget.h"
@@ -19,6 +20,7 @@ class StaffCheWeiManageWidget : public BaseManageWidget
 public:
     StaffCheWeiManageWidget();
     void receiveKey(const QString &key);
+    void handle(BaseStaffCheWeiHandleWidget &bscwhw,int type);
 private:
     QLabel *label_1,*label_2;
     QPushButton *b_btn_4,*b_btn_5,*b_btn_6;
@@ -27,6 +29,7 @@ private:
     StaffCheWeiEditWidget *scwew;
     StaffCheWeiDetailWidget *scwdw;
     StaffCheWeiSearchWidget *scwsw;
+    BaseStaffCheWeiHandleWidget *bscwhw_1,*bscwhw_2;
     void init();
     void refreshData();
 private slots:
