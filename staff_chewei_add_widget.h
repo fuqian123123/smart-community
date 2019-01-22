@@ -15,6 +15,7 @@
 #include "base_handle_widget.h"
 class StaffCheWeiAddWidget : public BaseHandleWidget
 {
+    Q_OBJECT
 public:
     StaffCheWeiAddWidget();
     void sendSignal();

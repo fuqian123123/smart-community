@@ -20,6 +20,9 @@ StaffCheWeiManageWidget::StaffCheWeiManageWidget()
 
     //为关联信号和槽做准备
     scwaw=new StaffCheWeiAddWidget;
+    scwew=new StaffCheWeiEditWidget;
+    scwdw=new StaffCheWeiDetailWidget;
+    scwsw=new StaffCheWeiSearchWidget;
 
     b_layout->addWidget(label_1,2);
     b_layout->addWidget(b_btn_1,3);
@@ -33,24 +36,50 @@ StaffCheWeiManageWidget::StaffCheWeiManageWidget()
 
     //为关联信号和槽做准备
     connect(b_btn_1,QPushButton::clicked,this,add);
+    connect(b_btn_2,QPushButton::clicked,this,edit);
+    connect(b_btn_3,QPushButton::clicked,this,search);
     connect(b_btn_5,QPushButton::clicked,this,chuzu);
     connect(b_btn_6,QPushButton::clicked,this,chushou);
+    connect(scwaw,&StaffCheWeiAddWidget::newCheWei,this,refreshData);
+    connect(scwew,&StaffCheWeiEditWidget::editCheWei,this,refreshData);
+    connect(scwsw,&StaffCheWeiSearchWidget::entered,this,receiveKey);
+    //connect(syzew,&StaffYeZhuEditWidget::editUser,this,refreshData);
 
     this->init();
 }
+void StaffCheWeiManageWidget::receiveKey(const QString &key){
+    scwsw->hide();
+    scwsw->clear();
+    bool flag=scwdw->loadData(key);
+    if(!flag){
+        QMessageBox::information(this,tr("错误"),tr("加载失败!"),QMessageBox::Ok);
+        return;
+    }
+    scwdw->setWindowTitle("详情");
+    scwdw->setWindowModality(Qt::ApplicationModal);
+    scwdw->show();
+}
+
 void StaffCheWeiManageWidget::init(){
     QString queryStr=QString("select pp_num"
                              ", case account_num"
-                             " when account_num is null then '空'"
+                             " when '0' then '空'"
+                             " else account_num"
                              " end as account_num"
                              " ,case c_status"
                              " when 0 then '待租/售'"
                              " when 1 then '已租'"
                              " when 2 then '已售'"
                              " end as c_status"
+                             " ,case c_type"
+                             " when 1 then '小型车位'"
+                             " when 2 then '中型车位'"
+                             " when 3 then '大型车位'"
+                             " end as c_type"
                              " ,case c_chongdian"
                              " when 0 then '无'"
                              " when 1 then '有'"
+                             " end as c_chongdian"
                              " ,c_price_1"
                              " ,c_price_2"
                              " from chewei");
@@ -58,9 +87,10 @@ void StaffCheWeiManageWidget::init(){
     q_model->setHeaderData(0, Qt::Orientation::Horizontal, "车位号");
     q_model->setHeaderData(1, Qt::Orientation::Horizontal, "业主账号");
     q_model->setHeaderData(2, Qt::Orientation::Horizontal, "租售状态");
-    q_model->setHeaderData(3, Qt::Orientation::Horizontal, "充电桩状态");
-    q_model->setHeaderData(4, Qt::Orientation::Horizontal, "出租价格");
-    q_model->setHeaderData(5, Qt::Orientation::Horizontal, "出售价格");
+    q_model->setHeaderData(3, Qt::Orientation::Horizontal, "车位类型");
+    q_model->setHeaderData(4, Qt::Orientation::Horizontal, "充电桩状态");
+    q_model->setHeaderData(5, Qt::Orientation::Horizontal, "出租价格(元)");
+    q_model->setHeaderData(6, Qt::Orientation::Horizontal, "出售价格(元)");
 }
 void StaffCheWeiManageWidget::refreshData(){
     this->init();
@@ -71,10 +101,21 @@ void StaffCheWeiManageWidget::add(){
     scwaw->show();
 }
 void StaffCheWeiManageWidget::edit(){
-
+    QString key;
+    setMajorKey(key);
+    if(!scwew->isFree(key)){
+        QMessageBox::information(this,tr("提示"),tr("已租售车位不可修改!"),QMessageBox::Ok);
+        return ;
+    }
+    scwew->loadData(key);
+    scwew->setWindowTitle("修改");
+    scwew->setWindowModality(Qt::ApplicationModal);
+    scwew->show();
 }
 void StaffCheWeiManageWidget::search(){
-
+    scwsw->setWindowTitle("查询");
+    scwsw->setWindowModality(Qt::ApplicationModal);
+    scwsw->show();
 }
 void StaffCheWeiManageWidget::del(){
 

@@ -27,6 +27,13 @@ void BaseManageWidget::load(const QString &queryStr){
     tableView->setEditTriggers(QAbstractItemView::NoEditTriggers);
     tableView->setModel(q_model);
 }
+void BaseManageWidget::setMajorKey(QString &key){
+    int rowNum=tableView->currentIndex().row();
+    QAbstractItemModel *qaim = tableView->model();
+    QModelIndex qmi=qaim->index(rowNum,0);
+    QVariant qv=qaim->data(qmi);
+    key=qv.toString();
+}
 
 void BaseManageWidget::init(){}
 void BaseManageWidget::add(){}

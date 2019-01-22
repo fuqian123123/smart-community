@@ -28,8 +28,8 @@ StaffCheWeiAddWidget::StaffCheWeiAddWidget()
     label_1->setText("车位号");
     label_2->setText("车位类型");
     label_3->setText("充电桩状态");
-    label_4->setText("出租价格");
-    label_5->setText("出售价格");
+    label_4->setText("出租价格(元)");
+    label_5->setText("出售价格(元)");
     radio_btn_1_1->setText("小型车位");
     radio_btn_1_2->setText("中型车位");
     radio_btn_1_3->setText("大型车位");
@@ -67,10 +67,71 @@ StaffCheWeiAddWidget::StaffCheWeiAddWidget()
     layout->addLayout(h_layout_2);
     layout->addLayout(h_layout_3);
     layout->addLayout(b_layout);
+
+    //赋初值
+    radio_btn_1_1->setChecked(true);
+    radio_btn_2_1->setChecked(true);
+    lineEdit_1->setFocus();
+
+    //关联信号和槽
+    connect(this->enter_btn,QPushButton::clicked,this,enter);
+    connect(this->clear_btn,QPushButton::clicked,this,clear);
+}
+void StaffCheWeiAddWidget::sendSignal(){
+    emit newCheWei();
 }
 void StaffCheWeiAddWidget::enter(){
+    if(lineEdit_1->text().isEmpty()){
+        QMessageBox::information(this,tr("错误"),tr("车位号不能为空!"),QMessageBox::Ok);
+        lineEdit_1->setFocus();
+    }
+    else if(lineEdit_2->text().isEmpty()){
+        QMessageBox::information(this,tr("错误"),tr("出租价格不能为空!"),QMessageBox::Ok);
+        lineEdit_2->setFocus();
+    }
+    else if(lineEdit_3->text().isEmpty()){
+        QMessageBox::information(this,tr("错误"),tr("出售价格不能为空!"),QMessageBox::Ok);
+        lineEdit_3->setFocus();
+    }
+    else{
+        int pp_num=lineEdit_1->text().toInt();
 
+        QSqlQuery query;
+        QString str_1=QString("select count(*) from chewei where pp_num=%1").arg(pp_num);
+        if(query.exec(str_1)){
+            query.next();
+            if(query.value(0).toInt()>0){
+                QMessageBox::information(this,tr("错误"),tr("该车位已存在!"),QMessageBox::Ok);
+                return ;
+            }
+            else{
+                int c_price_1=lineEdit_2->text().toInt();
+                int c_price_2=lineEdit_3->text().toInt();
+                int c_type=qbg_1->checkedId();
+                int c_chongdian=qbg_2->checkedId();
+                QString str_2=QString("insert into chewei"
+                                      " (pp_num,c_type,c_chongdian,c_price_1,c_price_2)"
+                                      " values (%1,%2,%3,%4,%5)")
+                                      .arg(pp_num).arg(c_type).arg(c_chongdian).arg(c_price_1).arg(c_price_2);
+                qDebug()<<str_2;
+                if(query.exec(str_2)){
+                    QMessageBox::information(this,tr("成功"),tr("添加成功!"),QMessageBox::Ok);
+                }
+                else{
+                    QMessageBox::information(this,tr("失败"),tr("添加失败!"),QMessageBox::Ok);
+                }
+            }
+        }
+        else{
+            QMessageBox::information(this,tr("错误"),tr("数据库错误!"),QMessageBox::Ok);
+        }
+    }
+    //发送信号，要求更新列表
+    this->sendSignal();
 }
 void StaffCheWeiAddWidget::clear(){
-
+    lineEdit_1->setText("");
+    lineEdit_2->setText("");
+    lineEdit_3->setText("");
+    lineEdit_1->setFocus();
 }

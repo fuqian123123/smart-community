@@ -25,6 +25,7 @@ protected:
     QSqlQueryModel* q_model;
     void init();
     void load(const QString &queryStr);
+    void setMajorKey(QString &key);
 protected slots:
     void add();
     void edit();

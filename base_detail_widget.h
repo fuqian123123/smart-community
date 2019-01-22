@@ -13,6 +13,7 @@ class BaseDetailWidget : public QWidget
 public:
     explicit BaseDetailWidget(QWidget *parent = 0);
     void loadData(const QString &key);
+
 protected:
     QVBoxLayout* layout;
 };
