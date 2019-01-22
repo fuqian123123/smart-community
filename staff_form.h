@@ -9,6 +9,7 @@
 #include "staff_yezhu_manage_widget.h"
 #include "staff_kaoqin_manage_widget.h"
 #include "staff_chewei_manage_widget.h"
+#include "staff_feiyong_manage_widget.h"
 
 class StaffForm : public QWidget
 {
@@ -27,14 +28,16 @@ private:
     QVBoxLayout* layout;
     QHBoxLayout* h_layout;
     QStackedWidget* c_stackedWidget;
-    StaffYeZhuManageWidget* syzmw;
-    StaffKaoQinManageWidget* skqmw;
-    StaffCheWeiManageWidget* scwmw;
+    StaffYeZhuManageWidget *syzmw;
+    StaffKaoQinManageWidget *skqmw;
+    StaffCheWeiManageWidget *scwmw;
+    StaffFeiYongManageWidget *sfymw;
 private slots:
     void quit();
     void checkoutYeZhu();
     void checkoutKaoQin();
     void checkoutCheWei();
+    void checkoutFeiYong();
 };
 
 #endif // STAFF_FORM_H
