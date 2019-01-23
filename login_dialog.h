@@ -3,6 +3,8 @@
 
 #include <QDialog>
 #include <QButtonGroup>
+#include <QHBoxLayout>
+#include <QVBoxLayout>
 #include <QSqlTableModel>
 #include "manager_form.h"
 #include "staff_form.h"

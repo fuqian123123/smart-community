@@ -8,6 +8,7 @@
 #include <QStackedWidget>
 #include "owner_chewei_manage_widget.h"
 #include "owner_feiyong_manage_widget.h"
+#include "owner_guzhang_manage_widget.h"
 class OwnerForm : public QWidget
 {
     Q_OBJECT
@@ -22,6 +23,7 @@ private:
     QStackedWidget* c_stackedWidget;
     OwnerCheWeiManageWidget *ocwmw;
     OwnerFeiYongManageWidget *ofymw;
+    OwnerGuZhangManageWidget *ogzmw;
 private slots:
     void quit();
     void checkoutCheWei();

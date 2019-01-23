@@ -69,13 +69,13 @@ void ManagerRenYuanAddWidget::enter(){
         query.bindValue(":password",password);
         if(query.exec()){
             QMessageBox::information(this,tr("成功"),tr("添加成功!"),QMessageBox::Ok);
+            this->sendSignal();
         }
         else
             QMessageBox::information(this,tr("失败")
             ,tr("添加失败:%1!").arg(model->lastError().text()),QMessageBox::Ok);
     }
     //发送信号，要求更新列表
-    this->sendSignal();
 }
 void ManagerRenYuanAddWidget::clear(){
     lineEdit_1->setText("");

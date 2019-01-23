@@ -21,9 +21,11 @@ OwnerForm::OwnerForm(QWidget *parent) : QWidget(parent)
     //页面中部
     ocwmw=new OwnerCheWeiManageWidget;
     ofymw=new OwnerFeiYongManageWidget;
+    ogzmw=new OwnerGuZhangManageWidget;
     c_stackedWidget=new QStackedWidget(this);
     c_stackedWidget->addWidget(ocwmw);
     c_stackedWidget->addWidget(ofymw);
+    c_stackedWidget->addWidget(ogzmw);
     //页面底部
     b_btn=new QPushButton;
     b_btn->setText("退出");
@@ -57,5 +59,5 @@ void OwnerForm::checkoutFeiYong(){
     checkout(1);
 }
 void OwnerForm::checkoutGuZhang(){
-    //checkout(2);
+    checkout(2);
 }

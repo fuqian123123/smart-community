@@ -73,13 +73,19 @@ void StaffGuZhangEditWidget::enter(){
         int gStatus=getStatus(key);
         if(gStatus==0)
             gStatus=1;
-        else if(gStatus==1)
+        else if(gStatus==1){
             gStatus=2;
-        else if(gStatus==2)
-            gStatus=3;
+        }
+        else if(gStatus==2){
+            QMessageBox::information(this,tr("提示"),tr("该故障已处理完成!"),QMessageBox::Ok);
+            return ;
+        }
+        else if(gStatus==3){
+            QMessageBox::information(this,tr("提示"),tr("该故障已评价!"),QMessageBox::Ok);
+            return ;
+        }
         QString detail=lineEdit->text();
 
-        QTextCodec::setCodecForLocale(QTextCodec::codecForName("UTF8"));
         QSqlQuery query;
         QString str_2=QString("update guzhang set g_status=%1,g_detail='%2'"
                               " where fault_num=%3")

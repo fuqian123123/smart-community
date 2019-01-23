@@ -107,7 +107,6 @@ void OwnerCheWeiManageWidget::wodeshenqing(){
                              " from chewei_shenqing"
                              " where c_s_del=0"
                              " and account_num='%1'").arg(GLOBAL_ACCOUNT_NUM);
-    qDebug()<<queryStr;
     this->load(queryStr);
     q_model->setHeaderData(0, Qt::Orientation::Horizontal, "车位号");
     q_model->setHeaderData(1, Qt::Orientation::Horizontal, "申请类型");

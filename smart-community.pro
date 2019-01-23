@@ -61,7 +61,10 @@ SOURCES += main.cpp\
     owner_chewei_manage_widget.cpp \
     owner_feiyong_search_widget.cpp \
     owner_feiyong_manage_widget.cpp \
-    owner_feiyong_add_widget.cpp
+    owner_feiyong_add_widget.cpp \
+    owner_guzhang_manage_widget.cpp \
+    owner_guzhang_add_widget.cpp \
+    owner_guzhang_pingjia_widget.cpp
 
 HEADERS  += \
     sqlmanager.h \
@@ -99,7 +102,10 @@ HEADERS  += \
     owner_chewei_manage_widget.h \
     owner_feiyong_search_widget.h \
     owner_feiyong_manage_widget.h \
-    owner_feiyong_add_widget.h
+    owner_feiyong_add_widget.h \
+    owner_guzhang_manage_widget.h \
+    owner_guzhang_add_widget.h \
+    owner_guzhang_pingjia_widget.h
 
 FORMS    += \
     logindialog.ui
