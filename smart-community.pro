@@ -54,7 +54,8 @@ SOURCES += main.cpp\
     base_staff_chewei_handle_widget.cpp \
     staff_feiyong_manage_widget.cpp \
     staff_feiyong_search_widget.cpp \
-    staff_feiyong_add_widget.cpp
+    staff_feiyong_add_widget.cpp \
+    staff_guzhang_manage_widget.cpp
 
 HEADERS  += \
     sqlmanager.h \
@@ -85,7 +86,8 @@ HEADERS  += \
     base_staff_chewei_handle_widget.h \
     staff_feiyong_manage_widget.h \
     staff_feiyong_search_widget.h \
-    staff_feiyong_add_widget.h
+    staff_feiyong_add_widget.h \
+    staff_guzhang_manage_widget.h
 
 FORMS    += \
     logindialog.ui
