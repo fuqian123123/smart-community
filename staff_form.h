@@ -20,12 +20,7 @@ public:
     void checkout(const int &num);
 private:
     QLabel* h_label;
-    QPushButton* h_btn_1;
-    QPushButton* h_btn_2;
-    QPushButton* h_btn_3;
-    QPushButton* h_btn_4;
-    QPushButton* h_btn_5;
-    QPushButton* b_btn;
+    QPushButton *h_btn_1,*h_btn_2,*h_btn_3,*h_btn_4,*h_btn_5,*b_btn;
     QVBoxLayout* layout;
     QHBoxLayout* h_layout;
     QStackedWidget* c_stackedWidget;

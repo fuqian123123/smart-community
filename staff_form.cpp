@@ -17,7 +17,7 @@ StaffForm::StaffForm(QWidget *parent) : QWidget(parent)
     h_btn_2->setText("个人考勤");
     h_btn_3->setText("车位管理");
     h_btn_4->setText("费用管理");
-    h_btn_5->setText("故障查询");
+    h_btn_5->setText("故障管理");
     h_layout=new QHBoxLayout();
     h_layout->addWidget(h_btn_1);
     h_layout->addWidget(h_btn_2);

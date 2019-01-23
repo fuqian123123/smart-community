@@ -76,6 +76,8 @@ void LoginDialog::on_loginBtn_clicked()
                 break;
             //业主
             case 3:
+                of=new OwnerForm;
+                of->show();
                 break;
             default:
                 break;
