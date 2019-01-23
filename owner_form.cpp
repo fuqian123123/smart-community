@@ -20,8 +20,10 @@ OwnerForm::OwnerForm(QWidget *parent) : QWidget(parent)
     h_layout->addWidget(h_btn_3);
     //页面中部
     ocwmw=new OwnerCheWeiManageWidget;
+    ofymw=new OwnerFeiYongManageWidget;
     c_stackedWidget=new QStackedWidget(this);
     c_stackedWidget->addWidget(ocwmw);
+    c_stackedWidget->addWidget(ofymw);
     //页面底部
     b_btn=new QPushButton;
     b_btn->setText("退出");
@@ -40,12 +42,20 @@ OwnerForm::OwnerForm(QWidget *parent) : QWidget(parent)
 void OwnerForm::quit(){
     exit(0);
 }
+void OwnerForm::checkout(const int &num){
+    int index=c_stackedWidget->currentIndex();
+    if(index!=num){
+        index=num;
+        c_stackedWidget->setCurrentIndex(index);
+    }
+}
 void OwnerForm::checkoutCheWei(){
     ocwmw->init();
+    checkout(0);
 }
 void OwnerForm::checkoutFeiYong(){
-
+    checkout(1);
 }
 void OwnerForm::checkoutGuZhang(){
-
+    //checkout(2);
 }

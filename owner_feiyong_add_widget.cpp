@@ -1,6 +1,7 @@
-#include "staff_feiyong_add_widget.h"
+#include "owner_feiyong_add_widget.h"
 
-StaffFeiYongAddWidget::StaffFeiYongAddWidget()
+extern QString GLOBAL_ACCOUNT_NUM;
+OwnerFeiYongAddWidget::OwnerFeiYongAddWidget()
 {
     label_1=new QLabel;
     label_2=new QLabel;
@@ -43,7 +44,6 @@ StaffFeiYongAddWidget::StaffFeiYongAddWidget()
     layout_3->addWidget(label_3,1);
     layout_3->addWidget(lineEdit_2,3);
 
-    layout->addLayout(layout_1);
     layout->addLayout(layout_2);
     layout->addLayout(layout_3);
     layout->addLayout(b_layout);
@@ -51,12 +51,12 @@ StaffFeiYongAddWidget::StaffFeiYongAddWidget()
     connect(this->enter_btn,QPushButton::clicked,this,enter);
     connect(this->clear_btn,QPushButton::clicked,this,clear);
 }
-void StaffFeiYongAddWidget::init(){
+void OwnerFeiYongAddWidget::init(){
     lineEdit_1->setText("");
     lineEdit_2->setText("");
     radio_btn_1->setChecked(true);
 }
-bool StaffFeiYongAddWidget::isExisted(const QString &key){
+bool OwnerFeiYongAddWidget::isExisted(const QString &key){
     QString str=QString("select count(*) from user"
                         " where u_type=3 and account_num='%1'").arg(key);
     QSqlQuery query;
@@ -70,26 +70,16 @@ bool StaffFeiYongAddWidget::isExisted(const QString &key){
     return false;
 }
 
-void StaffFeiYongAddWidget::sendSignal(){
+void OwnerFeiYongAddWidget::sendSignal(){
     emit newFeiYong();
 }
-void StaffFeiYongAddWidget::enter(){
-    if(lineEdit_1->text().isEmpty()){
-        QMessageBox::information(this,tr("错误"),tr("业主账号不能为空!"),QMessageBox::Ok);
-        lineEdit_1->setFocus();
-    }
-    else if(lineEdit_2->text().isEmpty()){
+void OwnerFeiYongAddWidget::enter(){
+    if(lineEdit_2->text().isEmpty()){
         QMessageBox::information(this,tr("错误"),tr("缴费数额不能为空!"),QMessageBox::Ok);
         lineEdit_2->setFocus();
     }
     else{
-        //判断该业主账号是否已录入
-        if(!isExisted(lineEdit_1->text())){
-            QMessageBox::information(this,tr("提示"),tr("该业主账号不存在!"),QMessageBox::Ok);
-            this->init();
-            return ;
-        }
-        QString accountNum=lineEdit_1->text();
+        QString accountNum=GLOBAL_ACCOUNT_NUM;
         int f_count=lineEdit_2->text().toInt();
         int f_type=qbg->checkedId();
         QSqlQuery query;
@@ -107,7 +97,7 @@ void StaffFeiYongAddWidget::enter(){
     //发送信号，要求更新列表
     this->sendSignal();
 }
-void StaffFeiYongAddWidget::clear(){
+void OwnerFeiYongAddWidget::clear(){
     lineEdit_1->setText("");
     lineEdit_2->setText("");
     lineEdit_1->setFocus();

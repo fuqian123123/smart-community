@@ -67,7 +67,6 @@ void OwnerCheWeiManageWidget::shenqing(int type){
                         " (pp_num,account_num,c_s_type,c_s_date)"
                         " values(%1,'%2',%3,now())")
                         .arg(ppNum.toInt()).arg(GLOBAL_ACCOUNT_NUM).arg(type);
-    qDebug()<<str;
     bool flag=query.exec(str);
     if(!flag){
         QMessageBox::information(this,tr("失败"),info+"失败!",QMessageBox::Ok);
