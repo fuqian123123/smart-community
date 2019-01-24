@@ -4,6 +4,8 @@
 #include <QWidget>
 #include <QPushButton>
 #include <QLabel>
+#include <QMessageBox>
+#include <QSqlQuery>
 #include <QVBoxLayout>
 #include <QStackedWidget>
 #include "manager_renyuan_manage_widget.h"

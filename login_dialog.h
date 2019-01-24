@@ -20,6 +20,8 @@ class LoginDialog : public QDialog
 
 public:
     explicit LoginDialog(QWidget *parent = 0);
+    bool isLogin(const QString &key);
+    void setLogined(const QString &key);
     ~LoginDialog();
 
 private slots:

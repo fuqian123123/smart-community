@@ -1,8 +1,12 @@
 #include "staff_form.h"
 
+extern QString GLOBAL_ACCOUNT_NUM;
 StaffForm::StaffForm(QWidget *parent) : QWidget(parent)
 {
     this->resize(800,500);
+    this->setWindowIcon(QIcon(":/myres/images/icons/community.png"));
+    this->setWindowTitle("智慧小区");
+
     layout=new QVBoxLayout(this);
     //页头
     h_label=new QLabel;
@@ -80,5 +84,12 @@ void StaffForm::checkoutGuZhang(){
 }
 
 void StaffForm::quit(){
+    QSqlQuery query;
+    QString str=QString("update user set u_flag=0"
+                        " where account_num='%1'").arg(GLOBAL_ACCOUNT_NUM);
+    if(!query.exec(str)){
+        QMessageBox::information(this,tr("失败"),tr("退出失败!"),QMessageBox::Ok);
+        return;
+    }
     exit(0);
 }

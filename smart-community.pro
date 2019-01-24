@@ -109,3 +109,6 @@ HEADERS  += \
 
 FORMS    += \
     logindialog.ui
+
+RESOURCES += \
+    my_resource.qrc

@@ -4,6 +4,8 @@
 #include <QWidget>
 #include <QPushButton>
 #include <QLabel>
+#include <QSqlQuery>
+#include <QMessageBox>
 #include <QVBoxLayout>
 #include <QStackedWidget>
 #include "owner_chewei_manage_widget.h"

@@ -1,11 +1,15 @@
 #include <QWidget>
 #include "manager_form.h"
 
+extern QString GLOBAL_ACCOUNT_NUM;
 /*管理员主界面*/
 ManagerForm::ManagerForm(QWidget *parent) :
     QWidget(parent)
 {
     this->resize(800,500);
+    this->setWindowIcon(QIcon(":/myres/images/icons/community.png"));
+    this->setWindowTitle("智慧小区");
+
     layout=new QVBoxLayout(this);
     //页头
     h_label=new QLabel;
@@ -46,9 +50,6 @@ ManagerForm::ManagerForm(QWidget *parent) :
     connect(h_btn_2,QPushButton::clicked,this,checkoutKaoQin);
     connect(h_btn_3,QPushButton::clicked,this,checkoutChuQin);
 }
-void ManagerForm::quit(){
-    exit(0);
-}
 void ManagerForm::checkoutRenYuan(){
     int index=c_stackedWidget->currentIndex();
     if(index!=0){
@@ -68,6 +69,16 @@ void ManagerForm::checkoutKaoQin(){
         index=2;
         c_stackedWidget->setCurrentIndex(index);
     }
+}
+void ManagerForm::quit(){
+    QSqlQuery query;
+    QString str=QString("update user set u_flag=0"
+                        " where account_num='%1'").arg(GLOBAL_ACCOUNT_NUM);
+    if(!query.exec(str)){
+        QMessageBox::information(this,tr("失败"),tr("退出失败!"),QMessageBox::Ok);
+        return;
+    }
+    exit(0);
 }
 ManagerForm::~ManagerForm(){
 

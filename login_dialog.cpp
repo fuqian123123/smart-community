@@ -1,5 +1,6 @@
 #include <QMessageBox>
 #include <QSqlDatabase>
+#include <QSqlQuery>
 #include "login_dialog.h"
 #include "ui_logindialog.h"
 #include "manager_form.h"
@@ -11,6 +12,7 @@ LoginDialog::LoginDialog(QWidget *parent) :
     ui(new Ui::LoginDialog)
 {
     ui->setupUi(this);
+    this->setWindowIcon(QIcon(":/myres/images/icons/community.png"));
     setFixedSize(400,300);
     setWindowTitle(tr("登录"));
 
@@ -34,10 +36,33 @@ LoginDialog::~LoginDialog()
 {
     delete ui;
 }
+void LoginDialog::setLogined(const QString &key){
+    QSqlQuery query;
+    QString str=QString("update user set u_flag=1"
+                        " where account_num='%1'").arg(key);
+    if(!query.exec(str)){
+        QMessageBox::information(this,tr("错误"),tr("加载失败!"),QMessageBox::Ok);
+        return ;
+    }
+}
 
 void LoginDialog::on_quitBtn_clicked()
 {
     exit(0);
+}
+bool LoginDialog::isLogin(const QString &key){
+    QSqlQuery query;
+    QString str=QString("select u_flag from user"
+                        " where account_num='%1'").arg(key);
+    if(!query.exec(str)){
+        QMessageBox::information(this,tr("错误"),tr("加载失败!"),QMessageBox::Ok);
+        return false;
+    }
+    query.next();
+    int flag=query.value(0).toInt();
+    if(flag==0)
+        return true;
+    return false;
 }
 
 void LoginDialog::on_loginBtn_clicked()
@@ -61,6 +86,11 @@ void LoginDialog::on_loginBtn_clicked()
         model->setFilter(filter);
         model->select();
         if(model->rowCount()>0){
+            if(!isLogin(account_num)){
+                QMessageBox::information(this,tr("提示"),tr("该用户已在线!"),QMessageBox::Ok);
+                return ;
+            }
+            this->setLogined(account_num);
             QMessageBox::information(this,tr("成功"),tr("登录成功!"),QMessageBox::Ok);
             GLOBAL_ACCOUNT_NUM=ui->acntLineEdit->text();//记录登录人员的账号
             switch (type) {

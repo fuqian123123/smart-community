@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/myres">
+        <file>images/icons/community.png</file>
+    </qresource>
+</RCC>

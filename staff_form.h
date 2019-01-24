@@ -5,6 +5,8 @@
 #include <QPushButton>
 #include <QLabel>
 #include <QVBoxLayout>
+#include <QSqlQuery>
+#include <QMessageBox>
 #include <QStackedWidget>
 #include "staff_yezhu_manage_widget.h"
 #include "staff_kaoqin_manage_widget.h"

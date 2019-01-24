@@ -6,6 +6,8 @@
 BaseManageWidget::BaseManageWidget(QWidget *parent) :
     QWidget(parent)
 {
+    this->setWindowIcon(QIcon(":/myres/images/icons/community.png"));
+    this->setWindowTitle("智慧小区");
     q_model=new QSqlQueryModel;
 
     layout=new QVBoxLayout(this);
