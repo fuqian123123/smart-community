@@ -6,9 +6,13 @@ ManagerRenYuanManageWidget::ManagerRenYuanManageWidget()
     b_btn_4=new QPushButton;
 
     b_btn_1->setText("添加");
+    b_btn_1->setIcon(QIcon(":/myres/images/icons/tianjia.png"));
     b_btn_2->setText("修改");
+    b_btn_2->setIcon(QIcon(":/myres/images/icons/xiugai.png"));
     b_btn_3->setText("详情");
+    b_btn_3->setIcon(QIcon(":/myres/images/icons/xiangqing.png"));
     b_btn_4->setText("删除");
+    b_btn_4->setIcon(QIcon(":/myres/images/icons/shanchu.png"));
 
     b_layout->addWidget(b_btn_1);
     b_layout->addWidget(b_btn_2);

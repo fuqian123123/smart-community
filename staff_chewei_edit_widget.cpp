@@ -3,6 +3,7 @@
 StaffCheWeiEditWidget::StaffCheWeiEditWidget()
 {
     this->resize(380,150);
+    this->setWindowIcon(QIcon(":/myres/images/icons/xiugai.png"));
 
     label_1=new QLabel;
     label_1_1=new QLabel;

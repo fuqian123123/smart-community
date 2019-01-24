@@ -12,11 +12,17 @@ StaffCheWeiManageWidget::StaffCheWeiManageWidget()
     label_1->setText("车位管理");
     label_2->setText("车位租售");
     b_btn_1->setText("添加");
+    b_btn_1->setIcon(QIcon(":/myres/images/icons/tianjia.png"));
     b_btn_2->setText("修改");
+    b_btn_2->setIcon(QIcon(":/myres/images/icons/xiugai.png"));
     b_btn_3->setText("查询");
+    b_btn_3->setIcon(QIcon(":/myres/images/icons/chaxun.png"));
     b_btn_4->setText("删除");
+    b_btn_4->setIcon(QIcon(":/myres/images/icons/shanchu.png"));
     b_btn_5->setText("出租");
+    b_btn_5->setIcon(QIcon(":/myres/images/icons/zulin.png"));
     b_btn_6->setText("出售");
+    b_btn_6->setIcon(QIcon(":/myres/images/icons/chushou.png"));
 
     //为关联信号和槽做准备
     scwaw=new StaffCheWeiAddWidget;

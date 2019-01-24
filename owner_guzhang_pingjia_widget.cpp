@@ -2,6 +2,8 @@
 
 OwnerGuZhangPingJiaWidget::OwnerGuZhangPingJiaWidget()
 {
+    this->setWindowIcon(QIcon(":/myres/images/icons/pingjia.png"));
+
     label_1=new QLabel;
     lineEdit_1=new QLineEdit;
     layout_1=new QHBoxLayout;

@@ -3,6 +3,8 @@
 extern QString GLOBAL_ACCOUNT_NUM;
 OwnerFeiYongAddWidget::OwnerFeiYongAddWidget()
 {
+    this->setWindowIcon(QIcon(":/myres/images/icons/tianjia.png"));
+
     label_1=new QLabel;
     label_2=new QLabel;
     label_3=new QLabel;

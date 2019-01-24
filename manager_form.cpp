@@ -19,8 +19,11 @@ ManagerForm::ManagerForm(QWidget *parent) :
     h_btn_2=new QPushButton;
     h_btn_3=new QPushButton;
     h_btn_1->setText("人员管理");
+    h_btn_1->setIcon(QIcon(":/myres/images/icons/renyuan.png"));
     h_btn_2->setText("考勤管理");
+    h_btn_2->setIcon(QIcon(":/myres/images/icons/kaoqin.png"));
     h_btn_3->setText("月度出勤");
+    h_btn_3->setIcon(QIcon(":/myres/images/icons/chuqin.png"));
     h_layout=new QHBoxLayout();
     h_layout->addWidget(h_btn_1);
     h_layout->addWidget(h_btn_2);
@@ -36,6 +39,7 @@ ManagerForm::ManagerForm(QWidget *parent) :
     c_stackedWidget->addWidget(mcqmw);
     //页面底部
     b_btn=new QPushButton;
+    b_btn->setIcon(QIcon(":/myres/images/icons/tuichu.png"));
     b_btn->setText("退出");
 
     //排版
@@ -78,7 +82,7 @@ void ManagerForm::quit(){
         QMessageBox::information(this,tr("失败"),tr("退出失败!"),QMessageBox::Ok);
         return;
     }
-    exit(0);
+    this->hide();
 }
 ManagerForm::~ManagerForm(){
 

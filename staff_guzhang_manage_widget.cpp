@@ -3,6 +3,7 @@
 StaffGuZhangManageWidget::StaffGuZhangManageWidget()
 {
     b_btn_1->setText("更新故障维修情况");
+    b_btn_1->setIcon(QIcon(":/myres/images/icons/gengxin.png"));
     sgzew=new StaffGuZhangEditWidget;
 
     b_layout->addWidget(b_btn_1);

@@ -7,7 +7,9 @@ OwnerGuZhangManageWidget::OwnerGuZhangManageWidget()
     ogzpjw=new OwnerGuZhangPingJiaWidget;
 
     b_btn_1->setText("申报");
+    b_btn_1->setIcon(QIcon(":/myres/images/icons/shenbao.png"));
     b_btn_2->setText("评价");
+    b_btn_2->setIcon(QIcon(":/myres/images/icons/pingjia.png"));
 
     b_layout->addWidget(b_btn_1);
     b_layout->addWidget(b_btn_2);

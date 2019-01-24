@@ -6,7 +6,9 @@ StaffFeiYongManageWidget::StaffFeiYongManageWidget()
     sfyaw=new StaffFeiYongAddWidget;
 
     b_btn_1->setText("查询");
+    b_btn_1->setIcon(QIcon(":/myres/images/icons/chaxun.png"));
     b_btn_2->setText("缴费");
+    b_btn_2->setIcon(QIcon(":/myres/images/icons/jiaofei.png"));
     b_layout->addWidget(b_btn_1);
     b_layout->addWidget(b_btn_2);
 

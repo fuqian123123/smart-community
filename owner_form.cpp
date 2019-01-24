@@ -16,8 +16,11 @@ OwnerForm::OwnerForm(QWidget *parent) : QWidget(parent)
     h_btn_2=new QPushButton;
     h_btn_3=new QPushButton;
     h_btn_1->setText("车位管理");
+    h_btn_1->setIcon(QIcon(":/myres/images/icons/chewei.png"));
     h_btn_2->setText("费用管理");
+    h_btn_2->setIcon(QIcon(":/myres/images/icons/feiyong.png"));
     h_btn_3->setText("维修管理");
+    h_btn_3->setIcon(QIcon(":/myres/images/icons/weixiu.png"));
     h_layout=new QHBoxLayout();
     h_layout->addWidget(h_btn_1);
     h_layout->addWidget(h_btn_2);
@@ -32,6 +35,7 @@ OwnerForm::OwnerForm(QWidget *parent) : QWidget(parent)
     c_stackedWidget->addWidget(ogzmw);
     //页面底部
     b_btn=new QPushButton;
+    b_btn->setIcon(QIcon(":/myres/images/icons/tuichu.png"));
     b_btn->setText("退出");
 
     //排版
@@ -70,5 +74,5 @@ void OwnerForm::quit(){
         QMessageBox::information(this,tr("失败"),tr("退出失败!"),QMessageBox::Ok);
         return;
     }
-    exit(0);
+    this->hide();
 }

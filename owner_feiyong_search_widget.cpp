@@ -3,6 +3,7 @@
 OwnerFeiYongSearchWidget::OwnerFeiYongSearchWidget(QWidget *parent) :
     QWidget(parent)
 {
+    this->setWindowIcon(QIcon(":/myres/images/icons/chaxun.png"));
 
     label=new QLabel;
     h_layout=new QHBoxLayout;

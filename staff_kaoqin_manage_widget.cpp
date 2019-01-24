@@ -7,9 +7,13 @@ StaffKaoQinManageWidget::StaffKaoQinManageWidget()
     scqd=new StaffChuQinDetail;
 
     b_btn_1->setText("打卡");
+    b_btn_1->setIcon(QIcon(":/myres/images/icons/daka.png"));
     b_btn_2->setText("请假");
+    b_btn_2->setIcon(QIcon(":/myres/images/icons/qingjia.png"));
     b_btn_3->setText("销假");
+    b_btn_3->setIcon(QIcon(":/myres/images/icons/xiaojia.png"));
     b_btn_4->setText("月度出勤");
+    b_btn_4->setIcon(QIcon(":/myres/images/icons/chuqin.png"));
 
     b_layout->addWidget(b_btn_1);
     b_layout->addWidget(b_btn_2);

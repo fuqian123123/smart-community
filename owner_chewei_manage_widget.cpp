@@ -9,9 +9,13 @@ OwnerCheWeiManageWidget::OwnerCheWeiManageWidget()
     b_btn_4=new QPushButton;
 
     b_btn_1->setText("申请租赁");
+    b_btn_1->setIcon(QIcon(":/myres/images/icons/zulin.png"));
     b_btn_2->setText("申请购买");
+    b_btn_2->setIcon(QIcon(":/myres/images/icons/goumai.png"));
     b_btn_3->setText("我的申请");
+    b_btn_3->setIcon(QIcon(":/myres/images/icons/shenqing.png"));
     b_btn_4->setText("车位信息");
+    b_btn_4->setIcon(QIcon(":/myres/images/icons/xinxi.png"));
 
     b_layout->addWidget(b_btn_1,1);
     b_layout->addWidget(b_btn_2,1);

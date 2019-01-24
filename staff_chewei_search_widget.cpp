@@ -3,6 +3,8 @@
 
 StaffCheWeiSearchWidget::StaffCheWeiSearchWidget()
 {
+    this->setWindowIcon(QIcon(":/myres/images/icons/chaxun.png"));
+
     label->setText("车位号");
 
     //点击之后，发射信号送出key

@@ -5,6 +5,8 @@
 
 StaffYeZhuEditWidget::StaffYeZhuEditWidget()
 {
+    this->setWindowIcon(QIcon(":/myres/images/icons/xiugai.png"));
+
     //元素初始化
     label_1=new QLabel;
     label_2=new QLabel;

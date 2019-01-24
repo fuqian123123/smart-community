@@ -3,8 +3,11 @@
 ManagerKaoQinManageWidget::ManagerKaoQinManageWidget()
 {
     b_btn_1->setText("批准");
+    b_btn_1->setIcon(QIcon(":/myres/images/icons/pizhun.png"));
     b_btn_2->setText("驳回");
+    b_btn_2->setIcon(QIcon(":/myres/images/icons/bohui.png"));
     b_btn_3->setText("查看月度出勤");
+    b_btn_3->setIcon(QIcon(":/myres/images/icons/chuqin.png"));
 
     b_layout->addWidget(b_btn_1);
     b_layout->addWidget(b_btn_2);

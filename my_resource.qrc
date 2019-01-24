@@ -1,5 +1,31 @@
 <RCC>
     <qresource prefix="/myres">
+        <file>images/icons/chewei.png</file>
+        <file>images/icons/chuqin.png</file>
+        <file>images/icons/feiyong.png</file>
+        <file>images/icons/kaoqin.png</file>
+        <file>images/icons/renyuan.png</file>
+        <file>images/icons/weixiu.png</file>
         <file>images/icons/community.png</file>
+        <file>images/icons/bohui.png</file>
+        <file>images/icons/chaxun.png</file>
+        <file>images/icons/chushou.png</file>
+        <file>images/icons/daka.png</file>
+        <file>images/icons/gengxin.png</file>
+        <file>images/icons/jiaofei.png</file>
+        <file>images/icons/pizhun.png</file>
+        <file>images/icons/qingjia.png</file>
+        <file>images/icons/shanchu.png</file>
+        <file>images/icons/tianjia.png</file>
+        <file>images/icons/tuichu.png</file>
+        <file>images/icons/xiangqing.png</file>
+        <file>images/icons/xiaojia.png</file>
+        <file>images/icons/xiugai.png</file>
+        <file>images/icons/zulin.png</file>
+        <file>images/icons/shenbao.png</file>
+        <file>images/icons/shenqing.png</file>
+        <file>images/icons/goumai.png</file>
+        <file>images/icons/xinxi.png</file>
+        <file>images/icons/pingjia.png</file>
     </qresource>
 </RCC>

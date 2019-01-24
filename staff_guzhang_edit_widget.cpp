@@ -4,6 +4,8 @@
 
 StaffGuZhangEditWidget::StaffGuZhangEditWidget()
 {
+    this->setWindowIcon(QIcon(":/myres/images/icons/xiugai.png"));
+
     label_1=new QLabel;
     label_1_1=new QLabel;
     label_2=new QLabel;

@@ -4,6 +4,8 @@
 /*人员添加弹出页面*/
 StaffYeZhuAddWidget::StaffYeZhuAddWidget()
 {
+    this->setWindowIcon(QIcon(":/myres/images/icons/tianjia.png"));
+
     //元素初始化
     label_1=new QLabel;
     label_2=new QLabel;

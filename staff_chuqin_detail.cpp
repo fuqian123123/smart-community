@@ -3,6 +3,8 @@
 StaffChuQinDetail::StaffChuQinDetail()
 {
     this->resize(350,150);
+    this->setWindowIcon(QIcon(":/myres/images/icons/chuqin.png"));
+
     label_1=new QLabel;
     label_1_1=new QLabel;
     label_2=new QLabel;

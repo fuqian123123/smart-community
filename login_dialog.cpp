@@ -112,7 +112,7 @@ void LoginDialog::on_loginBtn_clicked()
             default:
                 break;
             }
-            this->hide();
+            //this->hide();
         }
         else{
             QMessageBox::information(this,tr("失败"),tr("登录失败!"),QMessageBox::Ok);

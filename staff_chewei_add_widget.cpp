@@ -3,6 +3,7 @@
 StaffCheWeiAddWidget::StaffCheWeiAddWidget()
 {
     this->resize(380,150);
+    this->setWindowIcon(QIcon(":/myres/images/icons/tianjia.png"));
 
     label_1=new QLabel;
     label_2=new QLabel;
