@@ -154,6 +154,7 @@ void StaffCheWeiManageWidget::del(){
 void StaffCheWeiManageWidget::handle(BaseStaffCheWeiHandleWidget &bscwhw,int type){
     QString key;
     QString info=type==1?"出租":"出售";
+    QString info_2=type==1?"租赁":"购买";
     setMajorKey(key);
     if(key==""){
         QMessageBox::information(this,tr("提示"),tr("请选择车位!"),QMessageBox::Ok);
@@ -168,7 +169,7 @@ void StaffCheWeiManageWidget::handle(BaseStaffCheWeiHandleWidget &bscwhw,int typ
         return ;
     }
     if(!bscwhw.isApplied(key,type)){
-        QMessageBox::information(this,tr("提示"),tr("暂无业主申请租赁此车位!"),QMessageBox::Ok);
+        QMessageBox::information(this,tr("提示"),"暂无业主申请"+info_2+"此车位!",QMessageBox::Ok);
         return ;
     }
     else{

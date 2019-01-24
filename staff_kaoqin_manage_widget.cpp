@@ -70,6 +70,13 @@ void StaffKaoQinManageWidget::getTodayDate(QString &today){
     today =current_date_time.toString("yyyy-MM-dd");
 }
 void StaffKaoQinManageWidget::handleToday(const int &type,const int &allowFlag){
+    QString info;
+    if(type==1)
+        info="请假";
+    else if(type==2)
+        info="销假";
+    else if(type==3)
+        info="打卡";
     if(!isFree()){
         QMessageBox::information(this,tr("提示"),tr("今日已操作!"),QMessageBox::Ok);
         return;
@@ -84,6 +91,8 @@ void StaffKaoQinManageWidget::handleToday(const int &type,const int &allowFlag){
         qDebug()<<query.lastError().databaseText();
         return;
     }
+    QMessageBox::information(this,tr("提示"),info+"成功!",QMessageBox::Ok);
+
 }
 void StaffKaoQinManageWidget::qingjia(){
     handleToday(1,0);

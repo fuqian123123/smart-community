@@ -1,3 +1,4 @@
+#include <QDebug>
 #include "base_staff_chewei_handle_widget.h"
 
 BaseStaffCheWeiHandleWidget::BaseStaffCheWeiHandleWidget()
@@ -35,12 +36,14 @@ bool BaseStaffCheWeiHandleWidget::handle(const QString &key,int type){
     //根据车位号在车位申请表里查询最先申请该车位的业主
     QString str_1=QString("select account_num from chewei_shenqing"
                         " where c_s_date in"
-                        " (select min(c_s_date) from chewei_shenqing)"
-                        " and c_s_type=%1"
-                        " and c_s_del=0").arg(type);
+                        " ("
+                        "  select min(c_s_date) from "
+                          "( select * from chewei_shenqing where c_s_del=0 and pp_num=%1 and c_s_type=%2) as a"
+                        " )").arg(ppNum).arg(type);
     if(!query.exec(str_1)){
         return false;
     }
+    qDebug()<<str_1;
     query.next();
     QString accountNum=query.value(0).toString();
     //type 1 已出租 2已出售
